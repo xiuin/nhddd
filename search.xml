@@ -1,0 +1,811 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[Python如何允许f()接受十进制值]]></title>
+    <url>%2FPython%E5%A6%82%E4%BD%95%E5%85%81%E8%AE%B8f-%E6%8E%A5%E5%8F%97%E5%8D%81%E8%BF%9B%E5%88%B6%E5%80%BC.html</url>
+    <content type="text"><![CDATA[❓ 首先，我需要先将学生分数相加，然后再将其转换为百分比。 因此，我已经设法总结了自己的分数，并设法通过此方法将其转换为百分比。 1students = MarkAtt.objects.values('studName__VMSAcc').annotate(mark=Sum('attendance'), percentage=(F('mark')/1100) * 100) 但是，我意识到f()不采用十进制值。 它仅采用整数值。 如果“标记”值小于100，这将导致我的百分比计算错误。例如：600/1100 = 0.54545，那么它将只用0乘以100的倍数。然后输出0，而不是54％。如何允许该函数采用十进制值？ ✔️ 您可以使用Cast，指定应将其转换为哪种类型，从而让Django进行推断： 1234567from django.db.models import FloatFieldfrom django.db.models.functions import Caststudents = MarkAtt.objects.values('studName__VMSAcc').annotate( mark=Sum('attendance'), percentage=(Cast('mark', FloatField())/1100) * 100) document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Python如何打开不同格式的图片]]></title>
+    <url>%2FPython%E5%A6%82%E4%BD%95%E6%89%93%E5%BC%80%E4%B8%8D%E5%90%8C%E6%A0%BC%E5%BC%8F%E7%9A%84%E5%9B%BE%E7%89%87.html</url>
+    <content type="text"><![CDATA[❓ 我有一个.jepg格式的数据集。 但是一些图像具有png格式。我想循环打开图像。 如何打开两种格式而没有错误？ ✔️ 我这样解决了： 12345try: image = Image.open("Data/Images/" + filename + ".jpeg") except : print(filename) image = Image.open("Data/Images/" + filename + ".png") document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[如何在不丢失其他字符的情况下解决错误的decoding]]></title>
+    <url>%2F%E5%A6%82%E4%BD%95%E5%9C%A8%E4%B8%8D%E4%B8%A2%E5%A4%B1%E5%85%B6%E4%BB%96%E5%AD%97%E7%AC%A6%E7%9A%84%E6%83%85%E5%86%B5%E4%B8%8B%E8%A7%A3%E5%86%B3%E9%94%99%E8%AF%AF%E7%9A%84decoding.html</url>
+    <content type="text"><![CDATA[✔️ 也许可以通过删除除£符号之外的所有非ASCII字符来清理字符串。 这是执行此操作的函数的示例： 12def remove_non_ascii(s): return "".join(i for i in s if any([ord(i)>> example = '10% Off Orders of Ã’£100'>>> remove_non_ascii(example)'10% Off Orders of £100'>>> document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[pip强制重新安装requirements.txt]]></title>
+    <url>%2Fpip%E5%BC%BA%E5%88%B6%E9%87%8D%E6%96%B0%E5%AE%89%E8%A3%85requirements-txt.html</url>
+    <content type="text"><![CDATA[✔️ 我用这个： 1pip install -r requirements.txt 您可以使用更多类似的东西： 1pip install -r requirements.txt --no-index --find-links --no-index忽略软件包索引（仅查看–find-links URL）。 -f，--find-links 如果是URL或html文件的路径，则解析到存档的链接 document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[在Python中从损坏的xml获取数据]]></title>
+    <url>%2F%E5%9C%A8Python%E4%B8%AD%E4%BB%8E%E6%8D%9F%E5%9D%8F%E7%9A%84xml%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE.html</url>
+    <content type="text"><![CDATA[✔️ 要修复字典，您需要将json.loads应用于字典的所有值，但不包括不是json格式的’jsonDefaultPlaceholder’： 12345del data['jsonDefaultPlaceholder']new_data = {k: json.loads(v) for k, v in data.items() if v}new_data['jsonChildsConfig']['70259']['sku']#output: '610306139887' 或者，如果您要将感兴趣的键转换为整数值： 12345del data['jsonDefaultPlaceholder']new_data2 = {k: {(int(key) if key.isdigit() else key): val for key,val in json.loads(v).items()} for k, v in data.items() if v}new_data2['jsonChildsConfig'][70259]['sku']# output: '610306139887' document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[如何在Python中知道当前的操作系统]]></title>
+    <url>%2F%E5%A6%82%E4%BD%95%E5%9C%A8Python%E4%B8%AD%E7%9F%A5%E9%81%93%E5%BD%93%E5%89%8D%E7%9A%84%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F.html</url>
+    <content type="text"><![CDATA[✔️ 12345678>>> import os>>> print os.nameposix>>> import platform>>> platform.system()'Linux'>>> platform.release()'2.6.22-15-generic' platform.system()的输出如下： 123Linux: LinuxMac: DarwinWindows: Windows document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[如何将整数时间戳转换为Python日期时间]]></title>
+    <url>%2F%E5%A6%82%E4%BD%95%E5%B0%86%E6%95%B4%E6%95%B0%E6%97%B6%E9%97%B4%E6%88%B3%E8%BD%AC%E6%8D%A2%E4%B8%BAPython%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4.html</url>
+    <content type="text"><![CDATA[✔️ datetime.datetime.fromtimestamp()是正确的，除了您可能具有以毫秒为单位的时间戳（类似于JavaScript中的时间戳），但fromtimestamp()期望的是Unix时间戳，以秒为单位。那样做： 123>>> import datetime>>> your_timestamp = 1331856000000>>> date = datetime.datetime.fromtimestamp(your_timestamp / 1e3) 结果是 12>>> datedatetime.datetime(2012, 3, 16, 1, 0) document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Python重复打印一个字符串]]></title>
+    <url>%2FPython%E9%87%8D%E5%A4%8D%E6%89%93%E5%8D%B0%E4%B8%80%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2.html</url>
+    <content type="text"><![CDATA[❓ 如何多次重复一个字符串？ 我知道我可以使用for循环，但是我想在n行中每行重复一个字符串x次。 例如，如果用户输入2，则输出为： 1234@@@@@@@@ 其中x等于2，n等于4。 ✔️ 12for i in range(3): print "Your text here" 或 12for i in range(3): print("Your text here") document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[如果文件不存在则创建文件]]></title>
+    <url>%2F%E5%A6%82%E6%9E%9C%E6%96%87%E4%BB%B6%E4%B8%8D%E5%AD%98%E5%9C%A8%E5%88%99%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6.html</url>
+    <content type="text"><![CDATA[✔️ 可以使用os模块： 1234import osif not os.path.exists('/tmp/test'): os.mknod('/tmp/test') document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[如何在python中找到两个日期时间对象之间的时差]]></title>
+    <url>%2F%E5%A6%82%E4%BD%95%E5%9C%A8python%E4%B8%AD%E6%89%BE%E5%88%B0%E4%B8%A4%E4%B8%AA%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4%E5%AF%B9%E8%B1%A1%E4%B9%8B%E9%97%B4%E7%9A%84%E6%97%B6%E5%B7%AE.html</url>
+    <content type="text"><![CDATA[✔️ 1234567>>> import datetime>>> a = datetime.datetime.now()>>> b = datetime.datetime.now()>>> c = b - adatetime.timedelta(0, 8, 562000)>>> divmod(c.days * 86400 + c.seconds, 60)(0, 8) # 0 minutes, 8 seconds document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[python进程返回代码-9是什么意思]]></title>
+    <url>%2Fpython%E8%BF%9B%E7%A8%8B%E8%BF%94%E5%9B%9E%E4%BB%A3%E7%A0%81-9%E6%98%AF%E4%BB%80%E4%B9%88%E6%84%8F%E6%80%9D.html</url>
+    <content type="text"><![CDATA[❓ 我有一个python脚本，返回的退出状态为-9。 我试图通过atexit模块来解决问题的根源，但是没有被调用。有什么提示可以帮助我找到脚本终止的原因和位置吗？ 问题是可重现的，操作系统：linux 3.7.10 ✔️ 该脚本已被操作系统杀死。 负返回值是用于终止进程的信号号。 该脚本需要太多内存。 我在系统日志中找到了这个： 12Out of memory: Kill process 26184 (python) score 439 or sacrifice childKilled process 26184 (python) total-vm:628772kB, anon-rss:447660kB, file-rss:0kB document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[如何比较python中的两个字符串？]]></title>
+    <url>%2F%E5%A6%82%E4%BD%95%E6%AF%94%E8%BE%83python%E4%B8%AD%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2.html</url>
+    <content type="text"><![CDATA[❓ 我有两个字符串 1string1="abc def ghi" 和 1string2="def ghi abc" 如何在不打断单词的情况下使这两个字符串相同？ ✔️ 似乎问题不是关于字符串相等，而是集合相等。 您只能通过拆分字符串并将其转换为集合来以这种方式进行比较： 12345s1 = 'abc def ghi's2 = 'def ghi abc'set1 = set(s1.split(' '))set2 = set(s2.split(' '))print set1 == set2 document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[ImportError. No module named pip]]></title>
+    <url>%2FImportError-No-module-named-pip.html</url>
+    <content type="text"><![CDATA[✔️ For Python 3 1sudo apt-get install python3-pip For Python 2 1sudo apt-get install python-pip document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[使用python关闭linux计算机]]></title>
+    <url>%2F%E4%BD%BF%E7%94%A8python%E5%85%B3%E9%97%ADlinux%E8%AE%A1%E7%AE%97%E6%9C%BA.html</url>
+    <content type="text"><![CDATA[✔️ 以root权限执行脚本 12import osos.system("shutdown now -h") document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[如何在Python中从文件流中lazily读取多个JSON值]]></title>
+    <url>%2F%E5%A6%82%E4%BD%95%E5%9C%A8Python%E4%B8%AD%E4%BB%8E%E6%96%87%E4%BB%B6%E6%B5%81%E4%B8%ADlazily%E8%AF%BB%E5%8F%96%E5%A4%9A%E4%B8%AAJSON%E5%80%BC.html</url>
+    <content type="text"><![CDATA[✔️ 这是一个非常简单的解决方案。 秘诀是尝试，失败并使用异常中的信息正确解析。 唯一的限制是该文件必须可搜索。 123456789101112131415def stream_read_json(fn): import json start_pos = 0 with open(fn, 'r') as f: while True: try: obj = json.load(f) yield obj return except json.JSONDecodeError as e: f.seek(start_pos) json_str = f.read(e.pos) obj = json.loads(json_str) start_pos += e.pos yield obj document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Python将字典打印为带有标题的表]]></title>
+    <url>%2FPython%E5%B0%86%E5%AD%97%E5%85%B8%E6%89%93%E5%8D%B0%E4%B8%BA%E5%B8%A6%E6%9C%89%E6%A0%87%E9%A2%98%E7%9A%84%E8%A1%A8.html</url>
+    <content type="text"><![CDATA[❓ 123Key________Label__________Number1__________Spices_________422__________Other Stuff______16 ✔️ 可以使用string formatting: 1234print "{:]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[如何在Python 3中使用零填充字符串]]></title>
+    <url>%2F%E5%A6%82%E4%BD%95%E5%9C%A8Python-3%E4%B8%AD%E4%BD%BF%E7%94%A8%E9%9B%B6%E5%A1%AB%E5%85%85%E5%AD%97%E7%AC%A6%E4%B8%B2.html</url>
+    <content type="text"><![CDATA[✔️ 从python 3.6开始，您可以使用fstring： >>> length = 1 >>> print(f'length = {length:03}') length = 001 document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[如何将Headers添加到Scrapy CrawlSpider请求]]></title>
+    <url>%2F%E5%A6%82%E4%BD%95%E5%B0%86Headers%E6%B7%BB%E5%8A%A0%E5%88%B0Scrapy-CrawlSpider%E8%AF%B7%E6%B1%82.html</url>
+    <content type="text"><![CDATA[✔️ 您可以使用headers参数将REFERER手动传递给每个请求： 1yield Request(parse=..., headers={'referer':...}) RefererMiddleware会执行相同的操作，并自动从上一个响应中获取引荐来源网址。 document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[用selenium如何获得下一页评论]]></title>
+    <url>%2F%E7%94%A8selenium%E5%A6%82%E4%BD%95%E8%8E%B7%E5%BE%97%E4%B8%8B%E4%B8%80%E9%A1%B5%E8%AF%84%E8%AE%BA.html</url>
+    <content type="text"><![CDATA[✔️ 尝试以下代码。您需要单击每个分页链接才能到达下一页。您将获得所有100条评论。 12345678910111213141516171819202122from selenium import webdriverfrom selenium.webdriver.common.by import Byfrom selenium.webdriver.support.ui import WebDriverWaitfrom selenium.webdriver.support import expected_conditions as ECfrom bs4 import BeautifulSoupimport timeurl = "https://www.innisfree.com/kr/ko/ProductReviewList.do"chromedriver = r'C:\Users\hhm\Downloads\chromedriver_win32\chromedriver.exe'driver = webdriver.Chrome(chromedriver)driver.get(url)for i in range(2,12): time.sleep(2) soup=BeautifulSoup(driver.page_source,'html.parser') nTypes = soup.select('.reviewList ul .newType div[class^=reviewCon] .reviewConTxt') for nType in nTypes: product = nType.select_one('.pdtName').text print(product) if i==11: break nextbutton=WebDriverWait(driver,10).until(EC.element_to_be_clickable((By.XPATH,"//span[@class='num']/a[text()='" +str(i)+"']"))) driver.execute_script("arguments[0].click();",nextbutton) document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[安装mysqldb python接口时找不到mysql_config]]></title>
+    <url>%2F%E5%AE%89%E8%A3%85mysqldb-python%E6%8E%A5%E5%8F%A3%E6%97%B6%E6%89%BE%E4%B8%8D%E5%88%B0mysql-config.html</url>
+    <content type="text"><![CDATA[❓ 我正在尝试使Python脚本在通过ssh连接到的Linux服务器上运行。 该脚本使用mysqldb。 我有我需要的所有其他组件，但是当我尝试通过setuptools安装mySQLdb时，如下所示： 1python setup.py install 我得到以下与mysql_config命令相关的错误报告。 123456789sh: mysql_config: command not foundTraceback (most recent call last): File "setup.py", line 15, in metadata, options = get_config() File "/usr/lib/python2.5/MySQL-python-1.2.3/setup_posix.py", line 43, in get_config libs = mysql_config("libs_r") File "/usr/lib/python2.5/MySQL-python-1.2.3/setup_posix.py", line 24, in mysql_config raise EnvironmentError("%s not found" % (mysql_config.path,))EnvironmentError: mysql_config not found ✔️ mySQLdb是mysql的python接口，但不是mysql本身。 显然，mySQLdb需要命令mysql_config，因此您需要先安装该命令。 您可以通过从shell运行mysql来确认自己是否安装了mysql吗？ 这应该给您一个响应，而不是mysql：not found。您正在使用哪个Linux发行版？ Mysql已为大多数Linux发行版预先打包。 例如，对于debian / ubuntu，安装mysql就像 1sudo apt-get install mysql-server mysql-config位于不同的软件包中，可以从安装（同样，假设debian / ubuntu）： 1sudo apt-get install libmysqlclient-dev 如果您使用的是mariadb，请替换为mysql，然后运行 1sudo apt-get install libmariadbclient-dev document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[自动编辑ftp上的文件]]></title>
+    <url>%2F%E8%87%AA%E5%8A%A8%E7%BC%96%E8%BE%91ftp%E4%B8%8A%E7%9A%84%E6%96%87%E4%BB%B6.html</url>
+    <content type="text"><![CDATA[✔️ FTP协议不允许您在文件开头插入一行。 您将必须下载整个文件，在本地进行编辑，然后重新上传回去。像这样： 1234567891011121314from io import BytesIOfrom ftplib import FTPftp = FTP(host, user, passwd)f = BytesIO()# Write headerf.write(str.encode("header\n"))path = "/remote/path/file.csv"# Append original contentsftp.retrbinary("RETR " + path, f.write)# Re-upload backf.seek(0, 0)ftp.storbinary("STOR " + path, f) document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[在pandas中将一列字符串转换为列表]]></title>
+    <url>%2F%E5%9C%A8pandas%E4%B8%AD%E5%B0%86%E4%B8%80%E5%88%97%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%88%97%E8%A1%A8.html</url>
+    <content type="text"><![CDATA[✔️ 您可以使用ast.literal_eval，这将给您一个元组： 12import astdf.LABELS = df.LABELS.apply(ast.literal_eval) 如果确实需要列表，请使用： 1df.LABELS.apply(lambda s: list(ast.literal_eval(s))) document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[怎么根据名字字符串导入模块]]></title>
+    <url>%2F%E6%80%8E%E4%B9%88%E6%A0%B9%E6%8D%AE%E5%90%8D%E5%AD%97%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%AF%BC%E5%85%A5%E6%A8%A1%E5%9D%97.html</url>
+    <content type="text"><![CDATA[✔️ 有关较新的版本，请参阅适用于Python 2和Python 3的importlib.import_module。 您也可以使用exec。或者使用__import__，您可以通过执行以下操作导入模块列表： 1234>>> moduleNames = ['sys', 'os', 're', 'unittest'] >>> moduleNames['sys', 'os', 're', 'unittest']>>> modules = map(__import__, moduleNames) document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Reverse / invert a mapping]]></title>
+    <url>%2FReverse-invert-a-mapping.html</url>
+    <content type="text"><![CDATA[❓ 有一个字典长这样 1my_map = {'a': 1, 'b': 2} 怎么反转成这样 1inv_map = {1: 'a', 2: 'b'} ✔️ For Python 2.7.x 1inv_map = {v: k for k, v in my_map.iteritems()} For Python 3+: 1inv_map = {v: k for k, v in my_map.items()} document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[忽略XML文件的命名空间以找到匹配的元素]]></title>
+    <url>%2F%E5%BF%BD%E7%95%A5XML%E6%96%87%E4%BB%B6%E7%9A%84%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E4%BB%A5%E6%89%BE%E5%88%B0%E5%8C%B9%E9%85%8D%E7%9A%84%E5%85%83%E7%B4%A0.html</url>
+    <content type="text"><![CDATA[❓ Python ElementTree模块：使用find，findall方法时，如何忽略XML文件的命名空间以找到匹配的元素 ✔️ 与其修改XML文档本身，不如解析它，然后修改结果中的标记，这是最好的。 这样，您可以处理多个名称空间和名称空间别名： 12345678910from StringIO import StringIOimport xml.etree.ElementTree as ET# instead of ET.fromstring(xml)it = ET.iterparse(StringIO(xml))for _, el in it: prefix, has_namespace, postfix = el.tag.partition('}') if has_namespace: el.tag = postfix # strip all namespacesroot = it.root document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[weighted average pandas]]></title>
+    <url>%2FWeighted-average-pandas.html</url>
+    <content type="text"><![CDATA[✔️ 如果lambda函数令人困惑，则apply也可以与函数定义一起使用。 （还有一个函数numpy.average计算加权平均值） 1234567import numpy as npdef weighted_average(group): weights = group['Volume'] height = group['Height'] return np.average(height,weights=weights)df.groupby(['STAND_ID','Species']).apply(func = weighted_average).unstack() document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[boto3 + MFA的例子]]></title>
+    <url>%2Fboto3-MFA%E7%9A%84%E4%BE%8B%E5%AD%90.html</url>
+    <content type="text"><![CDATA[❓ 我找到了boto + MFA的示例： http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_sample-code.html 但是我找不到如何使用boto3的示例。 任何等效的boto3示例？ ✔️ 下面的代码有效，但是您必须使用具有正确凭据的〜/.boto文件。 SerialNumber是您的MFA设备序列号或其完整的AWS信息 123456789101112131415#!/usr/bin/env pythonimport boto3mfa_TOTP = raw_input("Enter the MFA code: ")client=boto3.client( 'sts' )response = client.assume_role( RoleArn='arn:aws:iam::123456789:role/admin_full', RoleSessionName='mysession', DurationSeconds=3600, SerialNumber='arn:aws:iam::987654321:mfa/myaccount', TokenCode=mfa_TOTP,) document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[使用pip安装特定的软件包版本]]></title>
+    <url>%2F%E4%BD%BF%E7%94%A8pip%E5%AE%89%E8%A3%85%E7%89%B9%E5%AE%9A%E7%9A%84%E8%BD%AF%E4%BB%B6%E5%8C%85%E7%89%88%E6%9C%AC.html</url>
+    <content type="text"><![CDATA[❓ 我正在尝试使用通过--no-site-packages选项创建的新virtualenv安装MySQL_python适配器的1.2.2版本。 PyPi中显示的当前版本是1.2.3。 有没有办法安装旧版本？ 我发现有一篇文章指出应该这样做： 1pip install MySQL_python==1.2.2 但是，安装后，它仍在站点包中显示MySQL_python-1.2.3-py2.6.egg-info。 这是此软件包专用的问题，还是我做错了什么？ ✔️ 您可以通过pip install命令使用版本范围。 像这样： 1pip install 'stevedore>=1.3.0,=1.3.0,]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[TypeError. a bytes-like object is required, not 'str']]></title>
+    <url>%2FTypeError-a-bytes-like-object-is-required-not-str.html</url>
+    <content type="text"><![CDATA[❓ 出错TypeError: a bytes-like object is required, not ‘str’。以下是试图通过使用sockets修改用户提供的输入的代码： 12345678910from socket import *serverName = '127.0.0.1'serverPort = 12000clientSocket = socket(AF_INET, SOCK_DGRAM)message = input('Input lowercase sentence:')clientSocket.sendto(message,(serverName, serverPort))modifiedMessage, serverAddress = clientSocket.recvfrom(2048)print (modifiedMessage)clientSocket.close() 当我执行它并提供输入时，会发生以下错误： 12345Input lowercase sentence:fdsgfdfTraceback (most recent call last): File "C:\srinath files\NETWORKS\UDPclient.py", line 6, in clientSocket.sendto(message,(serverName, serverPort))TypeError: a bytes-like object is required, not 'str' ✔️ 这段代码可能对Python 2有用。但是在Python 3中，这会引起问题，这与位编码有关。 我试图制作一个简单的TCP服务器并遇到相同的问题。 编码对我有用。 尝试使用sendto命令。 1clientSocket.sendto(message.encode(),(serverName, serverPort)) 同样，如果要完全按照发送的方式打印数据，则可以使用.decode()在UDP服务器端接收数据。 document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[如何在Python logging.Formatter中字段右对齐]]></title>
+    <url>%2F%E5%A6%82%E4%BD%95%E5%9C%A8Python-logging-Formatter%E4%B8%AD%E5%AD%97%E6%AE%B5%E5%8F%B3%E5%AF%B9%E9%BD%90.html</url>
+    <content type="text"><![CDATA[❓ 我目前正在尝试在Python记录器中右对齐记录级别字段，现在输出如下： 1234[2011-10-14 13:47:51] [DEBUG] --- starting... (smtphandlers.py:96)[2011-10-14 13:47:51] [INFO] --- first things first... (smtphandlers.py:97)[2011-10-14 13:47:51] [WARNING] --- about to end... (smtphandlers.py:98)[2011-10-14 13:47:51] [DEBUG] --- ending (smtphandlers.py:99) 我希望这样： 1234[2011-10-14 13:47:51] [ DEBUG] --- starting... (smtphandlers.py:96)[2011-10-14 13:47:51] [ INFO] --- first things first... (smtphandlers.py:97)[2011-10-14 13:47:51] [ WARNING] --- about to end... (smtphandlers.py:98)[2011-10-14 13:47:51] [ DEBUG] --- ending (smtphandlers.py:99) 第一个块的格式行是： 1logging.Formatter("[%(asctime)s] [%(levelname)s] --- %(message)s (%(filename)s:%(lineno)s)", "%Y-%m-%d %H:%M:%S") ✔️ 1logging.Formatter("[%(asctime)s] [%(levelname)8s] --- %(message)s (%(filename)s:%(lineno)s)", "%Y-%m-%d %H:%M:%S") document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[在Python中将实时标准输出记录到文件]]></title>
+    <url>%2F%E5%9C%A8Python%E4%B8%AD%E5%B0%86%E5%AE%9E%E6%97%B6%E6%A0%87%E5%87%86%E8%BE%93%E5%87%BA%E8%AE%B0%E5%BD%95%E5%88%B0%E6%96%87%E4%BB%B6.html</url>
+    <content type="text"><![CDATA[✔️ 调用file.write不一定立即将内容写入HD。 它取决于文件对象的缓冲策略。 如果要在某个特定时间强行写入磁盘，则可以使用flush()方法。 请注意，sys.stdout刷新策略取决于安装的配置以及环境变量，因此，如果要保证标准输出和日志文件之间的“并行”写入，必须对两个流都进行flush()： 12345def write(self, message): self.terminal.write(message) self.log.write(message) self.terminal.flush() self.log.flush() document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Finally equivalent for If/Elif statements in Python]]></title>
+    <url>%2FFinally-equivalent-for-If-Elif-statements-in-Python.html</url>
+    <content type="text"><![CDATA[❓ Does Python have a finally equivalent for its if/else statements, similar to its try/except/finally statements? Something that would allow us to simplify this: 1234567891011if condition1: do stuff clean upelif condition2: do stuff clean upelif condition3: do stuff clean up...... to this: 12345678910if condition1: do stuffelif condition2: do stuffelif condition3: do stuff......finally: clean up ✔️ It can be done totally non-hackily like this: 12345678910def function(x,y,z): if condition1: blah elif condition2: blah2 else: return False #finally! clean up stuff. document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[查找在Beautiful Soup中标记的next items]]></title>
+    <url>%2F%E6%9F%A5%E6%89%BE%E5%9C%A8Beautiful-Soup%E4%B8%AD%E6%A0%87%E8%AE%B0%E7%9A%84next-items.html</url>
+    <content type="text"><![CDATA[❓ 我想用Beautiful Soup和Python解析HTML文件，例如 123456789Title 1&lt;/h1>content 1&lt;/p>&lt;/div>content 2&lt;/p>&lt;/div>...Title 2&lt;/h1>content 3&lt;/p>&lt;/div>content 4&lt;/p>&lt;/div>content 5&lt;/p>&lt;/div>... 我如何将其解析为这样的字典 123456789101112131415161718192021{ "Title 1": [ { "content": "content 1" }, { "content": "content 2" } ], "Title 2": [ { "content": "content 3" }, { "content": "content 4" }, { "content": "content 5" } ]} ✔️ 这是您可以实现的方法： 1234567891011121314151617soup = bs4.BeautifulSoup(html)data = {}row = []title = ""for tag in soup: print(tag) if tag.name == 'h1': if title: data[title] = row row = [] title = tag.string elif tag.name == 'div': row.append(tag.string)if title: data[title] = row document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[如何禁用Django的CSRF验证]]></title>
+    <url>%2F%E5%A6%82%E4%BD%95%E7%A6%81%E7%94%A8Django%E7%9A%84CSRF%E9%AA%8C%E8%AF%81.html</url>
+    <content type="text"><![CDATA[❓ 我已经在settings.py中注释掉了csrf处理器和中间件行： 12345678910111213141516171819122 123 TEMPLATE_CONTEXT_PROCESSORS = (124 'django.contrib.auth.context_processors.auth',125 # 'django.core.context_processors.csrf',126 'django.core.context_processors.request',127 'django.core.context_processors.static',128 'cyathea.processors.static',129 )130 131 MIDDLEWARE_CLASSES = (132 'django.middleware.common.CommonMiddleware',133 'django.contrib.sessions.middleware.SessionMiddleware',134 # 'django.middleware.csrf.CsrfViewMiddleware',135 'django.contrib.auth.middleware.AuthenticationMiddleware',136 'django.contrib.messages.middleware.MessageMiddleware',137 'django.middleware.locale.LocaleMiddleware',138 # Uncomment the next line for simple clickjacking protection:139 # 'django.middleware.clickjacking.XFrameOptionsMiddleware',140 ) 但是，当我使用Ajax发送请求时，Django仍然会提示“csrf token is incorrect or missing”，并且在将X-CSRFToken添加到标头后，请求将会成功。 这里发生了什么 ？ ✔️ 如果只需要一些视图而不使用CSRF，则可以使用@csrf_exempt： 12345from django.views.decorators.csrf import csrf_exempt@csrf_exemptdef my_view(request): return HttpResponse('Hello world') document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[可以将变量名转为字符串吗？]]></title>
+    <url>%2F%E5%B0%86%E5%8F%98%E9%87%8F%E5%90%8D%E8%BD%AC%E4%B8%BA%E5%AD%97%E7%AC%A6%E4%B8%B2.html</url>
+    <content type="text"><![CDATA[✔️ Python中唯一具有规范名称的对象是模块，函数和类，并且在定义函数或类或导入模块后，当然不能保证此规范名称在任何命名空间中都具有任何含义。 这些名称也可以在创建对象后进行修改，因此它们可能并不总是特别值得信赖。 如果不递归地遍历命名对象的树，那么您想做的事情是不可能的。 名称是对对象的单向引用。 一个普通的或多种花园的Python对象不包含对其名称的引用。 想象一下，如果要维护一个表示引用它的名称的字符串列表，是否需要每个整数，每个字典，每个列表，每个布尔值！ 这将是噩梦，对程序员几乎没有好处。 document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[python脚本运行完后运行其他脚本]]></title>
+    <url>%2Fpython%E8%84%9A%E6%9C%AC%E8%BF%90%E8%A1%8C%E5%AE%8C%E5%90%8E%E8%BF%90%E8%A1%8C%E5%85%B6%E4%BB%96%E8%84%9A%E6%9C%AC.html</url>
+    <content type="text"><![CDATA[✔️ 我建议将python脚本（script1.py，script2.py）封装在函数中，然后从schedule.py中依次调用这些函数。 document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[检查列表中是否存在值的最快方法]]></title>
+    <url>%2F%E6%A3%80%E6%9F%A5%E5%88%97%E8%A1%A8%E4%B8%AD%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8%E5%80%BC%E7%9A%84%E6%9C%80%E5%BF%AB%E6%96%B9%E6%B3%95.html</url>
+    <content type="text"><![CDATA[✔️ 最清晰，最快的方法: 1if 7 in alist 您也可以考虑使用set，但是从列表中构造该集合所花费的时间可能比更快的成员资格测试所节省的时间更多。 document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[导入20万行后，Python CSV导入花费太多时间]]></title>
+    <url>%2F%E5%AF%BC%E5%85%A520%E4%B8%87%E8%A1%8C%E5%90%8E%EF%BC%8CPython-CSV%E5%AF%BC%E5%85%A5%E8%8A%B1%E8%B4%B9%E5%A4%AA%E5%A4%9A%E6%97%B6%E9%97%B4.html</url>
+    <content type="text"><![CDATA[✔️ 使用executemany进行20K行的单次插入而不是20K条单独的INSERT语句将优化传输，但是数据库本身也可能是性能降低的一个因素。 根据我们的意见交流，数据库是性能缓慢的最终元凶。 我见过的一个想法是禁用索引，直到所有内容加载完毕。 123ALTER TABLE table DISABLE KEYS;... executemany called a bunch of times...ALTER TABLE table ENABLE KEYS; document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[在matplotlib中删除已保存图像周围的空白]]></title>
+    <url>%2F%E5%9C%A8matplotlib%E4%B8%AD%E5%88%A0%E9%99%A4%E5%B7%B2%E4%BF%9D%E5%AD%98%E5%9B%BE%E5%83%8F%E5%91%A8%E5%9B%B4%E7%9A%84%E7%A9%BA%E7%99%BD.html</url>
+    <content type="text"><![CDATA[❓ 我需要拍摄图像并经过一些处理将其保存。 显示该图形时，它看起来不错，但是保存该图形后，在保存的图像周围有一些空白。 我已经尝试过savefig方法的tight选项，但是也没有用。 代码： 12345678910111213import matplotlib.image as mpimgimport matplotlib.pyplot as pltfig = plt.figure(1)img = mpimg.imread(path)plt.imshow(img)ax=fig.add_subplot(1,1,1)extent = ax.get_window_extent().transformed(fig.dpi_scale_trans.inverted())plt.savefig('1.png', bbox_inches=extent)plt.axis('off') plt.show() 我正在尝试通过在图上使用NetworkX绘制基本图形并将其保存。 我意识到没有图就可以了，但是当添加图时，保存的图像周围会有空白； 123456789101112131415161718192021222324import matplotlib.image as mpimgimport matplotlib.pyplot as pltimport networkx as nxG = nx.Graph()G.add_node(1)G.add_node(2)G.add_node(3)G.add_edge(1,3)G.add_edge(1,2)pos = {1:[100,120], 2:[200,300], 3:[50,75]}fig = plt.figure(1)img = mpimg.imread("C:\\images\\1.jpg")plt.imshow(img)ax=fig.add_subplot(1,1,1)nx.draw(G, pos=pos)extent = ax.get_window_extent().transformed(fig.dpi_scale_trans.inverted())plt.savefig('1.png', bbox_inches = extent)plt.axis('off') plt.show() ✔️ 我不能说我确切知道我的“解决方案”为什么起作用或如何起作用，但是当我想将几个机翼截面的轮廓（没有白色边距）绘制到PDF文件时，这就是我要做的。 （请注意，我在带有-pylab标志的IPython笔记本中使用了matplotlib。） 12345678gca().set_axis_off()subplots_adjust(top = 1, bottom = 0, right = 1, left = 0, hspace = 0, wspace = 0)margins(0,0)gca().xaxis.set_major_locator(NullLocator())gca().yaxis.set_major_locator(NullLocator())savefig("filename.pdf", bbox_inches = 'tight', pad_inches = 0) 我尝试停用此功能的不同部分，但这总是在某处导致空白。 您甚至可以对此进行修改，以防止由于缺乏边距而使图形附近的粗线不被刮掉。 document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[如何将JSON数据转换为Python对象？]]></title>
+    <url>%2F%E5%A6%82%E4%BD%95%E5%B0%86JSON%E6%95%B0%E6%8D%AE%E8%BD%AC%E6%8D%A2%E4%B8%BAPython%E5%AF%B9%E8%B1%A1.html</url>
+    <content type="text"><![CDATA[✔️ 您可以使用namedtuple和object_hook在一行中完成此操作： 12345678import jsonfrom collections import namedtupledata = '{"name": "John Smith", "hometown": {"name": "New York", "id": 123}}'# Parse JSON into an object with attributes corresponding to dict keys.x = json.loads(data, object_hook=lambda d: namedtuple('X', d.keys())(*d.values()))print x.name, x.hometown.name, x.hometown.id 或者，轻松重用此方法： 1234def _json_object_hook(d): return namedtuple('X', d.keys())(*d.values())def json2obj(data): return json.loads(data, object_hook=_json_object_hook)x = json2obj(data) document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[将字符串从html搜索框传递给python函数]]></title>
+    <url>%2F%E5%B0%86%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%BB%8Ehtml%E6%90%9C%E7%B4%A2%E6%A1%86%E4%BC%A0%E9%80%92%E7%BB%99python%E5%87%BD%E6%95%B0.html</url>
+    <content type="text"><![CDATA[✔️ 尝试这个：在表单标签的action=""中，提供cgi脚本的位置，文本框的值将传递到cgi脚本。 eg. 1234&lt;/form> query_scorer.py 123import cgiform = cgi.FieldStorage()searchterm = form.getvalue('searchbox') document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Python中的wb是什么意思]]></title>
+    <url>%2FPython%E4%B8%AD%E7%9A%84wb%E6%98%AF%E4%BB%80%E4%B9%88%E6%84%8F%E6%80%9D.html</url>
+    <content type="text"><![CDATA[❓ 1file('pinax/media/a.jpg', 'wb') ✔️ 使用写和二进制模式打开文件。 如果您要读取该jpg文件，则需要使用rb 在Windows上，附加到模式的b以二进制模式打开文件，因此也有rb，wb和r + b之类的模式。 Windows上的Python区分会文本文件和二进制文件。 当读取或写入数据时，文本文件中的行尾字符会自动更改。 对文件数据进行这种幕后修改对于ASCII文本文件来说是很好的选择，但它会破坏二进制数据，例如JPEG或EXE文件中的二进制数据。 document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[python打印内存使用情况]]></title>
+    <url>%2FNo-module-named-mem-profile.html</url>
+    <content type="text"><![CDATA[✔️ 导入模块 1pip install memory_profiler import包 1import memory_profiler as mem_profile 更改代码 1mem_profile.memory_usage_psutil() to memory_usage() 这样打印语句 123print('Memory (Before): ' + str(mem_profile.memory_usage()) + 'MB' )print('Memory (After) : ' + str(mem_profile.memory_usage()) + 'MB')print ('Took ' + str(t2-t1) + ' Seconds') 您将获得类似以下代码的内容： 12345678910111213141516171819202122232425262728293031323334353637383940414243import memory_profiler as mem_profileimport randomimport timenames = ['John', 'Corey', 'Adam', 'Steve', 'Rick', 'Thomas']majors = ['Math', 'Engineering', 'CompSci', 'Arts', 'Business']# print('Memory (Before): {}Mb '.format(mem_profile.memory_usage_psutil()))print('Memory (Before): ' + str(mem_profile.memory_usage()) + 'MB' )def people_list(num_people): result = [] for i in range(num_people): person = { 'id': i, 'name': random.choice(names), 'major': random.choice(majors) } result.append(person) return resultdef people_generator(num_people): for i in range(num_people): person = { 'id': i, 'name': random.choice(names), 'major': random.choice(majors) } yield person# t1 = time.clock()# people = people_list(1000000)# t2 = time.clock()t1 = time.clock()people = people_generator(1000000)t2 = time.clock()# print 'Memory (After) : {}Mb'.format(mem_profile.memory_usage_psutil())print('Memory (After) : ' + str(mem_profile.memory_usage()) + 'MB')# print 'Took {} Seconds'.format(t2-t1)print ('Took ' + str(t2-t1) + ' Seconds') 现在我在使用python 3.6的情况下可以正常工作，并且没有任何错误。 document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[CountVectorizer AttributeError 'numpy.ndarray' object has no attribute 'lower']]></title>
+    <url>%2FCountVectorizer-AttributeError-numpy-ndarray-object-has-no-attribute-lower.html</url>
+    <content type="text"><![CDATA[❓ 出现CountVectorizer: AttributeError: 'numpy.ndarray' object has no attribute 'lower'错误. ✔️ 检查mealarray的形状。 如果fit_transform的参数是字符串数组，则它必须是一维数组。 （也就是说，mealarray.shape必须采用(n,).)的形式。例如，如果mealarray 具有诸如(n, 1)的形状，则会出现“no attribute”错误。 您可以尝试: 1data = vectorizer.fit_transform(mealarray.ravel()) document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[如何计算拼写校正的准确性]]></title>
+    <url>%2F%E5%A6%82%E4%BD%95%E8%AE%A1%E7%AE%97%E6%8B%BC%E5%86%99%E6%A0%A1%E6%AD%A3%E7%9A%84%E5%87%86%E7%A1%AE%E6%80%A7.html</url>
+    <content type="text"><![CDATA[❓ 我正在使用用于提取文本中错误单词的代码，正在将Python与textblob库一起使用。 在这个库中有一个函数Correction()，但是它只是基于错误的短语返回正确的短语，例如： 123in: b = TextBlob("I havv goood speling!")in: print(b.correct())out: I have good spelling! 我想计算更正的准确性，即根据原始文本获取更正的百分比，或者仅获取文本中错误词的数量。 ✔️ correct方法不会返回置信度，word.spellcheck会返回。 但是，它并不能真正帮助纠正单词，那些以最高置信度固定的单词的置信度值为1.0，并且您无法推断出有多少个单词得到了纠正。 您可以通过获取原始单词列表，固定单词列表，然后使用列表推导来获取原始列表中缺少的单词，从而获得其编号： 12345from textblob import TextBlobtext = 'I havv goood speling!'orig_words = text.split()fixed_words = TextBlob(text).correct().split()print(len([(x,y) for x,y in zip(orig_words, fixed_words) if x != y])) # => 3 document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[如何使字典的每个键值在新行上打印]]></title>
+    <url>%2F%E5%A6%82%E4%BD%95%E4%BD%BF%E5%AD%97%E5%85%B8%E7%9A%84%E6%AF%8F%E4%B8%AA%E9%94%AE%E5%80%BC%E5%9C%A8%E6%96%B0%E8%A1%8C%E4%B8%8A%E6%89%93%E5%8D%B0.html</url>
+    <content type="text"><![CDATA[✔️ 如果您确实不想导入pprint但希望它“看起来像”字典，则可以执行以下操作： 1print("{" + "\n".join("{!r}: {!r},".format(k, v) for k, v in d.items()) + "}") document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[如何使用python将.mp3转换为.wav？]]></title>
+    <url>%2F%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8python%E5%B0%86-mp3%E8%BD%AC%E6%8D%A2%E4%B8%BA-wav.html</url>
+    <content type="text"><![CDATA[✔️ 使用python3，代码如下： 123from pydub import AudioSegmentsound = AudioSegment.from_mp3("test.mp3")sound.export("test.wav", format="wav") 安装pydub： 12345678pip3 install pydubsudo apt-get updatesudo apt-get install software-properties-commonsudo add-apt-repository ppa:mc3man/trusty-mediasudo apt-get install ffmpegpython3 convert.py document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[怎么看已安装的pandas的版本号？]]></title>
+    <url>%2F%E6%80%8E%E4%B9%88%E7%9C%8B%E5%B7%B2%E5%AE%89%E8%A3%85%E7%9A%84pandas%E7%9A%84%E7%89%88%E6%9C%AC%E5%8F%B7.html</url>
+    <content type="text"><![CDATA[✔️ 使用pandas.__version__： 1234In [76]: import pandas as pdIn [77]: pd.__version__Out[77]: '0.12.0-933-g281dc4e' Pandas还提供了一个实用程序函数pd.show_versions（），该函数还报告了其依赖项的版本： 12345678910111213141516171819202122232425262728293031323334353637383940414243In [53]: pd.show_versions(as_json=False)INSTALLED VERSIONS------------------commit: Nonepython: 2.7.6.final.0python-bits: 64OS: LinuxOS-release: 3.13.0-45-genericmachine: x86_64processor: x86_64byteorder: littleLC_ALL: NoneLANG: en_US.UTF-8pandas: 0.15.2-113-g5531341nose: 1.3.1Cython: 0.21.1numpy: 1.8.2scipy: 0.14.0.dev-371b4ffstatsmodels: 0.6.0.dev-a738b4fIPython: 2.0.0-devsphinx: 1.2.2patsy: 0.3.0dateutil: 1.5pytz: 2012cbottleneck: Nonetables: 3.1.1numexpr: 2.2.2matplotlib: 1.4.2openpyxl: Nonexlrd: 0.9.3xlwt: 0.7.5xlsxwriter: Nonelxml: 3.3.3bs4: 4.3.2html5lib: 0.999httplib2: 0.8apiclient: Nonerpy2: 2.5.5sqlalchemy: 0.9.8pymysql: Nonepsycopg2: 2.4.5 (dt dec mx pq3 ext) document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[pandas series的quantile的反函数是什么？]]></title>
+    <url>%2Fpandas-Series%E7%9A%84quantile%E7%9A%84%E5%8F%8D%E5%87%BD%E6%95%B0%E6%98%AF%E4%BB%80%E4%B9%88.html</url>
+    <content type="text"><![CDATA[❓ quantile为我们提供pandas Series s的分位数，例如： 1s.quantile(0.9) is 4.2 是否有反函数（即累积分布）找到x的值 1s.quantile(x)=4 ✔️ 我和你有同样的问题！ 我找到了一种使用scipy求分位数的逆的简单方法。 1234567891011121314#libs requiredfrom scipy import statsimport pandas as pdimport numpy as np#generate ramdom data with same seed (to be reproducible)np.random.seed(seed=1)df = pd.DataFrame(np.random.uniform(0,1,(10)), columns=['a'])#quantile functionx = df.quantile(0.5)[0]#inverse of quantilestats.percentileofscore(df['a'],x) document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Pip Install Pulp错误，安装模块是否需要管理员权限]]></title>
+    <url>%2FPip-Install-Pulp%E9%94%99%E8%AF%AF%EF%BC%8C%E5%AE%89%E8%A3%85%E6%A8%A1%E5%9D%97%E6%98%AF%E5%90%A6%E9%9C%80%E8%A6%81%E7%AE%A1%E7%90%86%E5%91%98%E6%9D%83%E9%99%90.html</url>
+    <content type="text"><![CDATA[❓ 我已经将包从pypi.org网站下载到此PC上的program data文件夹中。这是弹出的错误 12345678910pip install pulpCollecting pulpNote: you may need to restart the kernel to use updated packages. WARNING: Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProxyError('Cannot connect to proxy.', OSError('Tunnel connection failed: 407 authenticationrequired'))': /simple/pulp/ WARNING: Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProxyError('Cannot connect to proxy.', OSError('Tunnel connection failed: 407 authenticationrequired'))': /simple/pulp/ WARNING: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProxyError('Cannot connect to proxy.', OSError('Tunnel connection failed: 407 authenticationrequired'))': /simple/pulp/ WARNING: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProxyError('Cannot connect to proxy.', OSError('Tunnel connection failed: 407 authenticationrequired'))': /simple/pulp/ WARNING: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProxyError('Cannot connect to proxy.', OSError('Tunnel connection failed: 407 authenticationrequired'))': /simple/pulp/ ERROR: Could not find a version that satisfies the requirement pulp (from versions: none)ERROR: No matching distribution found for pulp ✔️ 您需要告诉pip您的代理的信息才能使用它。 像这样： 1pip install --proxy http://user:password@host:port pulp 您可能需要询问IT部门有关细节。或者，告诉pip安装您下载的文件： 1pip install /path/to/downloaded/file 但是，如果需要其他软件包并且您的Internet连接不起作用，可能会出现其他问题。 document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Python如何将所有模块加载到文件夹中]]></title>
+    <url>%2FPython%E5%A6%82%E4%BD%95%E5%B0%86%E6%89%80%E6%9C%89%E6%A8%A1%E5%9D%97%E5%8A%A0%E8%BD%BD%E5%88%B0%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%AD.html</url>
+    <content type="text"><![CDATA[❓ 有人可以为我提供导入整个模块目录的好方法吗？有这样的结构： 1234/Foo bar.py spam.py eggs.py 我尝试通过添加__init__.py并from Foo import *将其转换为程序包，但是它没有按我希望的方式工作。 ✔️ 列出当前文件夹中的所有python(.py)文件，并将它们作为__all__变量放入__init__.py中 1234from os.path import dirname, basename, isfile, joinimport globmodules = glob.glob(join(dirname(__file__), "*.py"))__all__ = [ basename(f)[:-3] for f in modules if isfile(f) and not f.endswith('__init__.py')] document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[怎么从Python中的字符串中删除特定字符]]></title>
+    <url>%2F%E6%80%8E%E4%B9%88%E4%BB%8EPython%E4%B8%AD%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E5%88%A0%E9%99%A4%E7%89%B9%E5%AE%9A%E5%AD%97%E7%AC%A6.html</url>
+    <content type="text"><![CDATA[❓ 我正在尝试使用Python从字符串中删除特定字符。 这是我现在正在使用的代码。 它似乎对字符串没有任何作用。 123for char in line: if char in " ?.!/;:": line.replace(char,'') 如何正确执行此操作？ ✔️ 1234>>> string = "ab1cd1ef">>> string.replace("1","")'abcdef'>>> 把他放到循环中: 123456789>>>>>> a = "a!b@c#d$">>> b = "!@#$">>> for char in b:... a = a.replace(char,"")...>>> print aabcd>>> document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[安装python3后无法在ubuntu 16.04上打开终端]]></title>
+    <url>%2F%E5%AE%89%E8%A3%85python3%E5%90%8E%E6%97%A0%E6%B3%95%E5%9C%A8ubuntu-16-04%E4%B8%8A%E6%89%93%E5%BC%80%E7%BB%88%E7%AB%AF.html</url>
+    <content type="text"><![CDATA[❓ 我有一个大问题； 我试图在ubuntu 16.04上安装python 3，但安装后我的终端无法再打开。 然后我尝试删除pytohn，但问题仍然在这里，如果我打开xterm并尝试启动gnome-terminal我有此错误： 1"bash: /usr/bin/gnome-terminal: /usr/bin/python3 :FIle o directory does't exist" 我认为我的PC上的不同版本的phyton存在一些问题，但我找不到解决方案。 有人可以帮助我吗？ 谢谢 ✔️ 使用以下步骤来解决问题 1234567sudo apt install dconf-clidconf reset -f /org/gnome/terminalsudo apt-get remove gnome-terminalsudo apt-get install gnome-terminalsudo locale-gen --purgesudo dpkg-reconfigure localesreboot document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[即使“Requirement Already satisfied in Pip”也找不到Python模块]]></title>
+    <url>%2F%E5%8D%B3%E4%BD%BFRequirement-Already-satisfied-in-Pip%E4%B9%9F%E6%89%BE%E4%B8%8D%E5%88%B0Python%E6%A8%A1%E5%9D%97.html</url>
+    <content type="text"><![CDATA[❓ 我用pip安装了几个软件包，但出现ImportError: no module named requests。运行pip安装请求时： 123456> sudo -H pip install requests Requirement already satisfied: requests in /usr/local/lib/python2.7/site-packages Requirement already satisfied: certifi>=2017.4.17 in /usr/local/lib/python2.7/site-packages (from requests) Requirement already satisfied: chardet=3.0.2 in /usr/local/lib/python2.7/site-packages (from requests) Requirement already satisfied: urllib3=1.21.1 in /usr/local/lib/python2.7/site-packages (from requests) Requirement already satisfied: idna=2.5 in /usr/local/lib/python2.7/site-packages (from requests) 它在twindb_cloudflare, requests, group, tarutil,和MySQL DB上出错。 我可以在另一个脚本（在同一文件夹中）上运行完全相同的导入而不会出现错误。 ✔️ 在命令提示符下运行 1pip list 如果您使用的是旧版本，请检查系统上已安装的版本尝试卸载软件包 1pip uninstall requests 重新安装 1pip install requests 您还可以测试pip是否不起作用 1easy_install requests document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[python3 make (e=5) Access is denied]]></title>
+    <url>%2Fpython3-make-e-5-Access-is-denied.html</url>
+    <content type="text"><![CDATA[❓ 当我在cygwin上运行make文件时，出现“访问被拒绝”错误。 有清单文件，输入和输出文件作为命令行参数传递给python脚本 12345python3 C:/git/tool.py -m ./config/manifest.txt -i drv.bin -o drv_out.binprocess_begin: CreateProcess(C:\cygwin64\bin\python3, python3 C:/git/tool.py -m ./config/manifest.txt -i drv.bin -o drv.bin, ...) failed.make (e=5): Access is denied. make version 12345make --versionGNU Make 4.2.1 plus updates till 2017-June-04Built for Windows32 ✔️ 我在很久以前安装了cygwin，新的make文件与cygwin中安装的make版本不兼容。 须将make二进制文件更新为最新版本。 document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Python提示ValueError could not convert string to float]]></title>
+    <url>%2FPython%E6%8F%90%E7%A4%BAValueError-could-not-convert-string-to-float.html</url>
+    <content type="text"><![CDATA[❓ 我有一个带有日期列的Pandas DataFrame。 数据是从csv文件导入的。 当我尝试拟合回归模型时，出现错误ValueError: could not convert string to float: '2019-08-30 07:51:21'。我该如何摆脱呢？ 这是数据： 123456 event_id tsm_id rssi_ts rssi batl batl_ts ts_diff0 417736018 4317714 2019-09-05 20:00:07 140 100.0 2019-09-05 18:11:49 01:48:181 417735986 4317714 2019-09-05 20:00:07 132 100.0 2019-09-05 18:11:49 01:48:182 418039386 4317714 2019-09-06 01:00:08 142 100.0 2019-09-06 00:11:50 00:48:183 418039385 4317714 2019-09-06 01:00:08 122 100.0 2019-09-06 00:11:50 00:48:184 420388010 4317714 2019-09-07 15:31:07 143 100.0 2019-09-07 12:11:50 03:19:17 这是我的代码 123456789101112131415161718192021222324model = pd.read_csv("source.csv")model.describe() event_id tsm_id. rssi batlcount 5.000000e+03 5.000000e+03 5000.000000 3784.000000mean 3.982413e+08 4.313492e+06 168.417200 94.364429std 2.200899e+07 2.143570e+03 35.319516 13.609917min 3.443084e+08 4.310312e+06 0.000000 16.00000025% 3.852882e+08 4.310315e+06 144.000000 97.00000050% 4.007999e+08 4.314806e+06 170.000000 100.00000075% 4.171803e+08 4.314815e+06 195.000000 100.000000max 4.258451e+08 4.317714e+06 242.000000 100.000000labels_b = np.array(model['batl'])features_r= model.drop('batl', axis = 1)features_r = np.array(features_r)from sklearn.model_selection import train_test_splittrain_features, test_features, train_labels, test_labels = train_test_split(features_r,labels_b, test_size = 0.25, random_state = 42)from sklearn.ensemble import RandomForestRegressorrf = RandomForestRegressor(n_estimators = 1000, random_state = 42)rf.fit(train_features, train_labels); 这是错误信息 12345678910111213141516171819202122232425262728ValueError Traceback (most recent call last) in 4 rf = RandomForestRegressor(n_estimators = 1000, random_state = 42) 5 # Train the model on training data----> 6 rf.fit(train_features, train_labels);~/ml/env/lib/python3.7/site-packages/sklearn/ensemble/forest.py in fit(self, X, y, sample_weight) 247 248 # Validate or convert input data--> 249 X = check_array(X, accept_sparse="csc", dtype=DTYPE) 250 y = check_array(y, accept_sparse='csc', ensure_2d=False, dtype=None) 251 if sample_weight is not None:~/ml/env/lib/python3.7/site-packages/sklearn/utils/validation.py in check_array(array, accept_sparse, accept_large_sparse, dtype, order, copy, force_all_finite, ensure_2d, allow_nd, ensure_min_samples, ensure_min_features, warn_on_dtype, estimator) 494 try: 495 warnings.simplefilter('error', ComplexWarning)--> 496 array = np.asarray(array, dtype=dtype, order=order) 497 except ComplexWarning: 498 raise ValueError("Complex data not supported\n"~/ml/env/lib/python3.7/site-packages/numpy/core/numeric.py in asarray(a, dtype, order) 536 537 """ """--> 538 return array(a, dtype, copy=False, order=order) 539 540 ValueError: could not convert string to float: '2019-08-30 07:51:21' ✔️ 您必须将时间日期从字符串转换为pandas时间戳。 这可以通过以下行完成（在您编写时，所有其他内容均会保留）： 12345678model = ( pd.read_csv("source.csv", parse_dates=['rssi_ts', 'batl_ts'], date_parser=lambda x: pd.to_datetime(x)) .assign( rssi_ts=lambda x: x.loc[:, 'rssi_ts'].astype(int) / 10 ** 9, batl_ts=lambda x: x.loc[:, 'batl_ts'].astype(int) / 10 ** 9, ts_diff=lambda x: pd.to_timedelta(x.loc[:, 'ts_diff']).astype(int) / 10 ** 9 )) 由parse_dates参数创建的时间戳对象可以转换为float。 document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[怎么将Panda DF List转换为字符串？]]></title>
+    <url>%2F%E6%80%8E%E4%B9%88%E5%B0%86Panda-DF-List%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%AD%97%E7%AC%A6%E4%B8%B2.html</url>
+    <content type="text"><![CDATA[❓ 我有一个panda data frame。 列之一包含一个列表。 我希望该列为单个字符串。 例如，我的列表['one'，'two'，'3']应该简单地是'1、2、3' 1df['col'] = df['col'].astype(str).apply(lambda x: ', '.join(df['col'].astype(str))) 给我['one', 'two', 'three']，['four','five','six']，其中第二个列表来自下一行。 不用说，对于数百万行，这种跨行的连接是不正确的。 ✔️ 在转换列表之前，您当然不应该转换为字符串。 尝试： 1df['col'].apply(', '.join) 还要注意，apply将函数应用于系列元素，因此在lambda函数中使用df['col']可能不是您想要的。 document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[在Python中怎么将字符串日期转换为时间戳？]]></title>
+    <url>%2F%E5%9C%A8Python%E4%B8%AD%E6%80%8E%E4%B9%88%E5%B0%86%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%97%A5%E6%9C%9F%E8%BD%AC%E6%8D%A2%E4%B8%BA%E6%97%B6%E9%97%B4%E6%88%B3.html</url>
+    <content type="text"><![CDATA[❓ 如何将"％d/％m/％Y"格式的字符串转换为时间戳？ 1"01/12/2011" -> 1322697600 ✔️ 12345>>> import time>>> import datetime>>> s = "01/12/2011">>> time.mktime(datetime.datetime.strptime(s, "%d/%m/%Y").timetuple())1322697600.0 document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[如何仅返回数组中配对值的数量？]]></title>
+    <url>%2F%E5%A6%82%E4%BD%95%E4%BB%85%E8%BF%94%E5%9B%9E%E6%95%B0%E7%BB%84%E4%B8%AD%E9%85%8D%E5%AF%B9%E5%80%BC%E7%9A%84%E6%95%B0%E9%87%8F.html</url>
+    <content type="text"><![CDATA[❓ 我想在数组中显示配对值的数量。 例如，我有这个数组： 1[10,10,10,10,20,20,20,30,50] 我想显示3，因为我们有3对数字。 我怎样才能做到这一点？ 12345678910111213function pairNumber(arr) { var sorted_arr = arr.sort(); var i; var results = []; for (i = 0; i < sorted_arr.length; i++) { if (sorted_arr[i + 1] == sorted_arr[i]) { results.push(sorted_arr[i]); } } return results.length;}console.log(pairNumber([10, 10, 10, 10, 20, 20, 20, 30, 50])) ✔️ 这是使用Set的另一种方法： 12345678910111213141516function pairNumbers(arr) { let count = 0; const set = new Set(); for (let i = 0; i < arr.length; i++) { if (set.has(arr[i])) { count++; set.delete(arr[i]) } else { set.add(arr[i]) } } return count;}console.log(pairNumbers([10, 10, 10, 10, 20, 20, 20, 30, 50])) // 3 document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[父元素覆盖子元素样式]]></title>
+    <url>%2F%E7%88%B6%E5%85%83%E7%B4%A0%E8%A6%86%E7%9B%96%E5%AD%90%E5%85%83%E7%B4%A0%E6%A0%B7%E5%BC%8F.html</url>
+    <content type="text"><![CDATA[❓ 我想问一下，每当我在标题导航下的&lt;a>标记中添加样式时，nav-bar-item中的子&lt;a>标记似乎被覆盖到外部&lt;a>标记上的所有内容。 它不应该只选择特定的&lt;a>标签吗？ HTML 1234567891011121314151617 The Pot&lt;/a> HOME&lt;/a> &lt;/li> PRODUCT&lt;/a> &lt;/li> TESTIMONIAL&lt;/a> &lt;/li> CONTACT&lt;/a> &lt;/li> &lt;/div>&lt;/div> SCSS 1234567891011121314151617181920212223242526272829303132333435363738394041424344* { margin: 0; padding: 0;}body { margin: 0; font-family: "Rubik", sans-serif; font-size: 14px; overflow-x: hidden; color: #454545; @include easeOut;}a,a:visited,a:active { text-decoration: none; color: inherit;}.header-navigation { padding-top: 30px; display: flex; justify-content: space-between; a { font-family: "Playfair Display", serif; } .nav-bar { display: flex; align-self: flex-end; &-item { list-style-type: none; padding-left: 20px; &:hover { color: $primary-color; } } }} ✔️ 您应该使用选择器parent>child（大于号）： 12345678910.header-navigation { padding-top: 30px; display: flex; justify-content: space-between; > a { font-family: "Playfair Display", serif; } ... 您当前正在使用"parent child"-selector（空格符号），该选择器将样式应用于父级的所有后续子代和子代子元素。 document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>CSS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[怎么从.com/重定向到.com]]></title>
+    <url>%2F%E6%80%8E%E4%B9%88%E4%BB%8E-com-%E9%87%8D%E5%AE%9A%E5%90%91%E5%88%B0-com.html</url>
+    <content type="text"><![CDATA[❓ 我有一个由Django服务的网页，并且我希望将其从mysite.com/重定向到301重定向到mysite.com，最后不加任何斜杠。 是否可以使用Django？我使用Django的最新版本，python 3.6。 1path("", views.home, name="main_page") 我不可以更改Nginx配置 ✔️ mysite.com/和mysite.com是相同的URL，您无需设置重定向。 您的意思可能是mysite.com/foo和mysite.com/foo/不具有相同的内容。 在Django中，通常可以通过使用URLfoo/实现，然后默认设置APPEND_SLASH = True会将/foo重定向到/foo/。 document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Python从文件中打印不重复的随机行]]></title>
+    <url>%2FPython%E4%BB%8E%E6%96%87%E4%BB%B6%E4%B8%AD%E6%89%93%E5%8D%B0%E4%B8%8D%E9%87%8D%E5%A4%8D%E7%9A%84%E9%9A%8F%E6%9C%BA%E8%A1%8C.html</url>
+    <content type="text"><![CDATA[❓ 我有一个程序，可以从文本文件中打印随机行。 我想将已经选择的行保存在列表或其他内容中，因此下次不再重复。例: 123456text_database.txtThis is a lineThis is an other lineThis is a test lineThat sucks 这是重复行的示例，它不是终端中的直接输出： 12345This is a lineThat sucksThat sucksThat sucksThis is a line 我的代码： 12345678# Variable for text filetext_database = './text_database.txt'...with open (text_database) as f: lines = f.readlines() print(random.choice(lines)) 我试过的 1234567with open (text_database) as f: lines_list = [] lines = f.readlines() random_tmp = random.choice(lines) if random_tmp not in lines_list: lines_list.append(random_tmp) print(random_tmp) 它不起作用，我需要帮助。 ✔️ 这是一个非常凌乱的解决方案，但我已经事先测试过 12345678910111213141516171819202122232425f = open(text_database, "r")list = []list_of_nums = []for i in f: list.append(i)elif command == '/random': randomNum = random.randint(0, len(list) - 1) def reRun(): global randomNum for i in list_of_nums: if randomNum == i: randomNum = random.randint(0, len(list) - 1) reRun() reRun() list_of_nums.append(randomNum) print(list[randomNum]) 这段代码的含义是遍历f中的所有行并将它们放在列表中。 然后它选择一个介于0到列表长度之间的随机数，并打印与该数字相对应的随机行。 document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Android Studio调试器控制台显示Failed to connect port]]></title>
+    <url>%2FAndroid-Studio%E8%B0%83%E8%AF%95%E5%99%A8%E6%8E%A7%E5%88%B6%E5%8F%B0%E6%98%BE%E7%A4%BAFailed-to-connect-port.html</url>
+    <content type="text"><![CDATA[❓ 我的Android Studio有问题。调试器控制台显示“Failed to connect”。任何Android设备（包括虚拟设备）中都会发生此问题。请给我一些想法来解决这个问题。 我试过了: 重新启动Android Studio 卸载Android Studio并重新安装 Clean Project Rebuild Project 刷新链接的C++项目 重新安装LLDB，Android SDK平台工具和Android SDK工具 我的环境 123Android Studio 3.5All SDK Tools are latest versionOS:Windows10 在调试器控制台中： 12345678910111209/12 15:38:17: Launching 'Unnamed' on Pixel XL API 28.$ adb shell am start -n "com.yourcompany.prototype3/com.yourcompany.Prototype3" -a android.intent.action.MAIN -c android.intent.category.LAUNCHER -DWaiting for application to come online: com.yourcompany.prototype3 | com.yourcompany.prototype3.testWaiting for application to come online: com.yourcompany.prototype3 | com.yourcompany.prototype3.testConnecting to com.yourcompany.prototype3Now Launching Native Debug Session$ adb shell cat /data/local/tmp/lldb-server | run-as com.yourcompany.prototype3 sh -c 'cat > /data/data/com.yourcompany.prototype3/lldb/bin/lldb-server && chmod 700 /data/data/com.yourcompany.prototype3/lldb/bin/lldb-server'$ adb shell cat /data/local/tmp/start_lldb_server.sh | run-as com.yourcompany.prototype3 sh -c 'cat > /data/data/com.yourcompany.prototype3/lldb/bin/start_lldb_server.sh && chmod 700 /data/data/com.yourcompany.prototype3/lldb/bin/start_lldb_server.sh'Starting LLDB server: /data/data/com.yourcompany.prototype3/lldb/bin/start_lldb_server.sh /data/data/com.yourcompany.prototype3/lldb unix-abstract /com.yourcompany.prototype3-0 platform-1568270301152.sock "lldb process:gdb-remote packets"Failed to connect portProcess finished with exit code 0 在Logcat中： 12342019-09-12 16:11:30.672 6551-6551/? I/pany.prototype: Not late-enabling -Xcheck:jni (already on)2019-09-12 16:11:30.700 6551-6551/? W/pany.prototype: Unexpected CPU variant for X86 using defaults: x862019-09-12 16:11:30.905 6551-6551/com.yourcompany.prototype3 W/ActivityThread: Application com.yourcompany.prototype3 is waiting for the debugger on port 8100...2019-09-12 16:11:30.907 6551-6551/com.yourcompany.prototype3 I/System.out: Sending WAIT chunk ✔️ 这是由Android SDK Platform-Tools 29.0.3损坏引起的 要解决此问题，您应该下载Platform-Tools 29.0.2。 替换Android SDK中的Platform-Tools。 UPD：此问题已通过Platform-Tools 29.0.4进行了修复：https://issuetracker.google.com/140369526现在，您可以更新到最新版本，而不是降级。 document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[python判断语句的区别]]></title>
+    <url>%2Fpython%E5%88%A4%E6%96%AD%E8%AF%AD%E5%8F%A5%E7%9A%84%E5%8C%BA%E5%88%AB.html</url>
+    <content type="text"><![CDATA[❓ 我目前正在学习Python，但我并不完全理解“True / False”的概念。在Python中，数字0与“假”相关，数字1与“真”相关。 当我写下面的代码： 123456789x = 2y = 1if y == True: print("Y is True")if x == True: print("X is True")else: print("X is False") 我得到“Y为真”，因为“1”为真。 我得到“ X为假”，但我认为这也应该为“ True”，因为存在一个值(x = 2)，而不是“None，0等”。 当我写： 1234if x: print("X is True")else: print("X is False") 然后我得到“X为True”，因为x不为空，因此为真。if x：和if x == True之间的确切区别是什么？ ✔️ 区别在于，if x == True:检查x的真值。 除0以外的所有整数的真值均为true（在本例中为2）。 if x == True:,但是，将x与True的值进行比较，True的值是1。比较2 == 1会得出错误的值。 确切地说，有两个相邻的概念：一个是“真值”，它确定if和while的行为。另外一个是值True和False，分别具有真值“true”和“false”，但不一定等于其他真实值。 错误值。 如果出于任何原因绝对需要检查True和False的确切值，通过if x is True或if x is False的方式进行检查。 这样可以确保如果y恰好为True，则可以通过测试；如果为1，则不会通过测试。 document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[python是否会重复使用重复的计算结果？]]></title>
+    <url>%2Fpython%E6%98%AF%E5%90%A6%E4%BC%9A%E9%87%8D%E5%A4%8D%E4%BD%BF%E7%94%A8%E9%87%8D%E5%A4%8D%E7%9A%84%E8%AE%A1%E7%AE%97%E7%BB%93%E6%9E%9C.html</url>
+    <content type="text"><![CDATA[❓ 如果我有一个希望在Python中求值的表达式，例如下面的代码片段中的r表达式，那么Python解释器会不会很聪明并且可以重用x + y + z子结果，或者只求它两次？ 我也想知道这个问题的答案是否与编译语言相同，例如C。 1234x = 1y = 2z = 3r = (x+y+z+1) + (x+y+z+2) ✔️ 您可以使用dis.dis进行检查。输出为： 1234567891011121314151617181920212223242526272 0 LOAD_CONST 0 (1) 2 STORE_NAME 0 (x)3 4 LOAD_CONST 1 (2) 6 STORE_NAME 1 (y)4 8 LOAD_CONST 2 (3) 10 STORE_NAME 2 (z)5 12 LOAD_NAME 0 (x) 14 LOAD_NAME 1 (y) 16 BINARY_ADD 18 LOAD_NAME 2 (z) 20 BINARY_ADD 22 LOAD_CONST 0 (1) 24 BINARY_ADD 26 LOAD_NAME 0 (x) 28 LOAD_NAME 1 (y) 30 BINARY_ADD 32 LOAD_NAME 2 (z) 34 BINARY_ADD 36 LOAD_CONST 1 (2) 38 BINARY_ADD 40 BINARY_ADD 42 STORE_NAME 3 (r) 44 LOAD_CONST 3 (None) 46 RETURN_VALUE 因此，它不会将表达式的结果缓存在括号中。尽管对于这种特定情况，它是可能的，但通常不会，因为自定义类可以定义__add__（或任何其他二进制操作）来修改自己。例如： 12345678910111213class Foo: def __init__(self, value): self.value = value def __add__(self, other): self.value += 1 return self.value + otherx = Foo(1)y = 2z = 3print(x + y + z + 1) # prints 8print(x + y + z + 1) # prints 9 如果您想要缓存结果，则可以通过例如functools.lru_cache来实现。另一方面，如以下示例所示，编译器将执行constant folding： 1234567891011>>> import dis>>> dis.dis("x = 'abc' * 5") 1 0 LOAD_CONST 0 ('abcabcabcabcabc') 2 STORE_NAME 0 (x) 4 LOAD_CONST 1 (None) 6 RETURN_VALUE>>> dis.dis("x = 1 + 2 + 3 + 4") 1 0 LOAD_CONST 0 (10) 2 STORE_NAME 0 (x) 4 LOAD_CONST 1 (None) 6 RETURN_VALUE document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[使用spilt如何拆分特殊字符？]]></title>
+    <url>%2F%E4%BD%BF%E7%94%A8spilt%E5%A6%82%E4%BD%95%E6%8B%86%E5%88%86%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6.html</url>
+    <content type="text"><![CDATA[❓ 当我尝试拆分时： 1"بحد-8635".split('-') 然后JavaScript给我这个结果： 12[0] - بحد,[1] - 8635 当我尝试拆分时： 1"2132-سسس".split('-') 它给了我这个不同的结果： 12[0] - 2132[1] - سسس 这是怎么回事？ 如何正确操作？ ✔️ 这取决于您如何键入字符串（从左到右/从右到左）。 在提供的问题中，2132-سسس是从左到右键入，8635-بحد是从右到左键入。 请看以下代码 123456789console.log("Typed left to right:");console.log("2132-سسس".split('-'));console.log("8635-بحد".split('-'));console.log("---------------");console.log("Typed right to left as Arabians follow:");console.log("سسس-2132".split('-'));console.log("بحد-8635".split('-')); document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[怎么将值转换为列？]]></title>
+    <url>%2F%E5%B0%86%E5%80%BC%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%88%97.html</url>
+    <content type="text"><![CDATA[❓ 我有以下数据： 1234567891011121314import pandas as pddf = pd.DataFrame({ 'A': [1, 3, 2, 1, 2], 'B': [2, 1, 3, 2, 3], 'C': [3, 2, 1, 3, 1],})print(df)# A B C# 0 1 2 3# 1 3 1 2# 2 2 3 1# 3 1 2 3# 4 2 3 1 此数据表示每一行的每个选项A，B和C的“排名”。例如，在第2行中，C是最好的，然后是A，然后是B。我想构造“倒置”数据帧，其中对于每一行，我在1、2和3位置有三列排名中的A，B和C现在是数据。因此，对于上面的示例，结果将是： 123456789101112out = pd.DataFrame({ 1: ['A', 'B', 'C', 'A', 'C'], 2: ['B', 'C', 'A', 'B', 'A'], 3: ['C', 'A', 'B', 'C', 'B'],})print(out)# 1 2 3# 0 A B C# 1 B C A# 2 C A B# 3 A B C# 4 C A B 理想情况下，df中的每一行都应具有三个不同的值1、2和3，但是在某些情况下可能会有重复的值（不需要考虑超出该范围的值）。如果可能的话，我想通过在相同位置“连接”选项名称并在缺少位置使用空字符串或NaN来解决此问题。例如，使用以下输入： 1234df_bad = pd.DataFrame({'A': [1], 'B': [2], 'C': [2]})print(df_bad)# A B C# 0 1 2 2 理想情况下，我希望获得以下输出： 1234out_bad = pd.DataFrame({1: ['A'], 2: ['BC'], 3: ['']})print(out_bad)# 1 2 3# 0 A BC 另外，我可以选择仅获取其中一个值而不是并置。我一直在浏览melt，pivot，pivot_table和其他函数，但无法弄清楚获得所需结果的方法。 ✔️ 对于重复排名的情况（例如第二个示例），在最后一步使用pivot和unstack的任何解决方案都会失败。 您需要pivot_table或crosstab。 正如您已经找到了使用pivot_table的解决方案。 这是crosstab例子： 12345678df2 = df_bad.stack().reset_index(1, name='cols')pd.crosstab(index=df2.index, columns=df2.cols, values=df2.level_1, aggfunc=''.join).fillna('')Out[171]:cols 1 2row_00 A BC 使用stack和pivot： 123456789df.stack().reset_index(1, name='cols').pivot(columns='cols', values='level_1')Out[131]:cols 1 2 30 A B C1 B C A2 C A B3 A B C4 C A B document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[怎么获取多个列的最大值并返回特定值？]]></title>
+    <url>%2F%E8%8E%B7%E5%8F%96%E5%A4%9A%E4%B8%AA%E5%88%97%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC%E5%B9%B6%E8%BF%94%E5%9B%9E%E7%89%B9%E5%AE%9A%E5%80%BC.html</url>
+    <content type="text"><![CDATA[❓ 我有一个像这样的数据： 1234567891011Sequence Duration1 Value1 Duration2 Value2 Duration3 Value31001 145 10 125 53 458 331002 475 20 175 54 652 451003 685 57 687 87 254 881004 125 54 175 96 786 961005 475 21 467 32 526 321006 325 68 301 54 529 411007 125 97 325 85 872 781008 129 15 429 41 981 821009 547 47 577 52 543 831010 666 65 722 63 257 87 我想在(（)Duration1，Duration2，Duration3)中找到Duration的最大值，然后返回相应的Value＆Sequence。我想要的输出： 12Sequence,Duration3,Value31008, 981, 82 ✔️ 尝试以下基于Numpy的相当简短的代码： 1234vv = df.iloc[:, 1::2].valuesiRow, iCol = np.unravel_index(vv.argmax(), vv.shape)iCol = iCol * 2 + 1result = df.iloc[iRow, [0, iCol, iCol + 1]] 结果是一个系列： 1234Sequence 1008Duration3 981Value3 82Name: 7, dtype: int64 如果要调整它（第一个为索引值，然后是实际值），则可以执行以下操作： 1pd.DataFrame([result.values], columns=result.index) document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[同一个函数的返回值可以有多种类型吗]]></title>
+    <url>%2F%E5%90%8C%E4%B8%80%E4%B8%AA%E5%87%BD%E6%95%B0%E7%9A%84%E8%BF%94%E5%9B%9E%E5%80%BC%E5%8F%AF%E4%BB%A5%E6%9C%89%E5%A4%9A%E7%A7%8D%E7%B1%BB%E5%9E%8B%E5%90%97.html</url>
+    <content type="text"><![CDATA[❓ 我正在尝试编写一个通用函数，将输入作为uint8，uint16，uint32，uint64，….并以最大元素的数据类型返回最大值？ 例如： 12345678template < typename T, typename X>auto Max_Number(T valueA, X valueB){ if (valueA > valueB) return valueA; else return valueB;} P.S: 此示例假定最大元素具有最大数据类型。 ✔️ 这是使用std::variant解决方案： 12345678910template < typename T, typename X> std::variant Max_Number ( T valueA, X valueB ){ std::variant res; if ( valueA > valueB ) res = valueA; else res = valueB; return res;} document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>C/C++</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[如何从不同长度列表的字典中创建词典列表？]]></title>
+    <url>%2F%E5%A6%82%E4%BD%95%E4%BB%8E%E4%B8%8D%E5%90%8C%E9%95%BF%E5%BA%A6%E5%88%97%E8%A1%A8%E7%9A%84%E5%AD%97%E5%85%B8%E4%B8%AD%E5%88%9B%E5%BB%BA%E8%AF%8D%E5%85%B8%E5%88%97%E8%A1%A8.html</url>
+    <content type="text"><![CDATA[❓ 我想从每个列表创建具有相同索引元素的词典列表。字典长这样: 1d = {'name': ['bob', 'john', 'harry', 'mary'], 'age': [13, 19, 23], 'height': [164, 188], 'job': ['programmer']} 所需的输出是： 1d2 = [{'name': 'bob', 'age': 13, 'height': 164, 'job': 'programmer'}, {'name': 'john', 'age': 19, 'height': 188}, {'name': 'harry', 'age': 23}, {'name': 'mary'}] 我已经尝试过: 1d2 = [dict(zip(d, t)) for t in zip(*d.values())] 但是我的输出是： 1d2 = [{'name': 'bob', 'age': 13, 'height': 164, 'job': 'programmer'}] 我认为这是因为列表的长度不同 ✔️ 您可以使用itertools.zip_longest并过滤掉None值： 1234567from itertools import zip_longest[{x: y for x, y in zip(d, t) if y is not None} for t in zip_longest(*d.values())]# [{'name': 'bob', 'age': 13, 'height': 164, 'job': 'programmer'}, # {'name': 'john', 'age': 19, 'height': 188}, # {'name': 'harry', 'age': 23}, # {'name': 'mary'}] document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[怎么用常量值初始化std::array？]]></title>
+    <url>%2F%E6%80%8E%E4%B9%88%E7%94%A8%E5%B8%B8%E9%87%8F%E5%80%BC%E5%88%9D%E5%A7%8B%E5%8C%96std-array.html</url>
+    <content type="text"><![CDATA[❓ 我需要使用const值初始化std::array的所有元素，就像使用std::vector一样。 12345678#include #include int main(){ std::vector v(10, 7); // OK std::array a(7); // does not compile, pretty frustrating} 有没有办法优雅地做到这一点？现在我正在使用这个： 123std::array a;for (auto & v : a) v = 7; 但我想避免使用显式代码进行初始化。 ✔️ 使用std::index_sequence，您可以执行以下操作： 12345678910111213141516namespace detail{ template constexpr std::array create_array(T value, std::index_sequence) { // cast Is to void to remove the warning: unused value return {{(static_cast(Is), value)...}}; }}template constexpr std::array create_array(const T& value){ return detail::create_array(value, std::make_index_sequence());} 随着使用 1auto a = create_array(7); // auto is std::array 与std::fill解决方案相反，它处理非默认的可构造类型。 document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>C/C++</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[有必要预先初始化不可能不被赋值的变量吗]]></title>
+    <url>%2F%E6%9C%89%E5%BF%85%E8%A6%81%E9%A2%84%E5%85%88%E5%88%9D%E5%A7%8B%E5%8C%96%E4%B8%8D%E5%8F%AF%E8%83%BD%E4%B8%8D%E8%A2%AB%E8%B5%8B%E5%80%BC%E7%9A%84%E5%8F%98%E9%87%8F%E5%90%97.html</url>
+    <content type="text"><![CDATA[❓ 有一个函数： 12345678910private String myMethod(String gender){ String newString = ""; if(gender.equals("a")) newString = internal.getValue(); else newString = external.getValue(); return newString;} 我重构了所有内容，但有一个小的变化：String newString; 而不是：String newString = ""; 这样重构可以改善代码吗？ 我知道当我们不初始化String时，它为null，但是在此示例中，它将始终从if or else中获得值a。 这个重构会改变什么吗？ ✔️ 这里不需要最初分配值；代码执行的所有分支都将给newString一个值。因此，您根本不需要初始化它。 代替两个返回值或一个if else语句来分配变量，返回一个三元数更简洁： 12345private String myMethod(String gender) { return gender.equals("a") ? internal.getValue() : external.getValue();} document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[为什么(inf + 0j)*1计算结果是inf + nanj？]]></title>
+    <url>%2F%E4%B8%BA%E4%BB%80%E4%B9%88-inf-0j-1%E8%AE%A1%E7%AE%97%E7%BB%93%E6%9E%9C%E6%98%AFinf-nanj.html</url>
+    <content type="text"><![CDATA[❓ 为什么1不是乘法身份，而是(inf + 0j)？ 12>>> (float('inf')+0j)*1(inf+nanj) ✔️ 首先将1转换为复数1 + 0j，然后将其转换为inf * 0乘法，从而得出nan。 123456(inf + 0j) * 1(inf + 0j) * (1 + 0j)inf * 1 + inf * 0j + 0j * 1 + 0j * 0j# ^ this is where it comes frominf + nan j + 0j + 0inf + nan j document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[仅扩展为其参数的PROTOTYPE宏有什么意义？]]></title>
+    <url>%2FPROTOTYPE%E5%AE%8F%E6%9C%89%E4%BB%80%E4%B9%88%E6%84%8F%E4%B9%89.html</url>
+    <content type="text"><![CDATA[❓ 我有一个头文件，其中包含 1#define PROTOTYPE（s） 这有什么意义呢？似乎它将只是用自身替换输入。使用方法如下： 1234CS_RETCODE clientmsg_callback PROTOTYPE((CS_CONTEXT * context,CS_CONNECTION *connection,CS_CLIENTMSG *clientmsg)); 这是使用Sybase Open Client的项目的一部分。稍后在此处使用clientmsg_callback： 12ct_callback(context, NULL, CS_SET, CS_CLIENTMSG_CB, (CS_VOID *)clientmsg_callback); ✔️ C语言早期，没有原型这样的东西。函数参数列表位于函数的括号之后，如下所示： 123456square(x)int x;{int y = x * x;return y;} 当然，参数放在括号内： 12345square(int x){int y = x * x;return y;} 注意“missing”返回类型； C函数曾经隐式地返回int，只有在您需要其他返回类型时，才必须说出它是什么。 函数声明还有另一套规则。K&R C (the ancient version)中的函数声明没有参数： 1int square(); ANSI C中的函数原型具有参数列表： 1int square(int x); 在过渡期间，人们使用了古怪的宏，因此他们可以两种方式进行编译： 1int square(PROTOTYPE(int x)); 和它一起使用将扩展到第一个版本 1#define PROTOTYPE(s) 和它一起使用将扩展到第二个版本 1#define PROTOTYPE(s) s 关于问题代码中的“额外”括号，当参数列表中有多个参数时，需要使用它们。没有它们，宏调用将具有多个参数，因此不会与仅具有一个参数定义的宏匹配： 12PROTOTYPE(int x, int y) // error: too many argumentsPROTOTYPE((int x, int y)) // ok: only one argument (enclosed in parentheses) document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>C/C++</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[java命令可以编译Java程序吗？]]></title>
+    <url>%2Fjava%E5%91%BD%E4%BB%A4%E5%8F%AF%E4%BB%A5%E7%BC%96%E8%AF%91Java%E7%A8%8B%E5%BA%8F%E5%90%97.html</url>
+    <content type="text"><![CDATA[❓ 大多数网站都说： “使用javac命令来编译.java文件。然后使用java命令运行它”。但是今天我试图在没有javac的情况下运行Java程序，但结果却很奇怪。 以下是一个名为hello.java的文件的内容： 12345public class Myclass { public static void main(String[] args){ System.out.println("hello world"); }} 运行： 1$ javac hello.java 我得到这样的错误 1234hello.java:1: error: class Myclass is public, should be declared in a file named Myclass.javapublic class Myclass { ^1 error 但是，当我不使用javac命令运行它时，它执行时没有任何错误。 12$ java hello.javahello world java命令还会编译程序吗？ 如果是，为什么我们需要javac命令？ 我的Java版本是：bash 123openjdk version "12.0.2" 2019-07-16OpenJDK Runtime Environment (build 12.0.2+10)OpenJDK 64-Bit Server VM (build 12.0.2+10, mixed mode) ✔️ 在Java 11之前，要运行代码，必须先对其进行编译，然后才能运行它。这是一个例子： 12javac test.javajava test 从Java 11开始，您仍然可以使用Javac + Java，也可以单独运行Java来编译和自动运行代码。请注意，不会生成任何.class文件。这是一个例子： 1java test.java 如果运行java -help，将看到各种允许的用法。这是我的机器上的样子。最后一个是您遇到的内容：java [options] [args]，它将“执行单个源文件程序”。 12345678910$ java -helpUsage: java [options] [args...] (to execute a class) or java [options] -jar [args...] (to execute a jar file) or java [options] -m [/] [args...] java [options] --module [/] [args...] (to execute the main class in a module) or java [options] [args] (to execute a single source-file program) 为什么我们需要javac命令？ 我们需要javac的原因是创建.class文件，以便可以像现在一样创建，测试，分发，运行，共享代码。JEP 330的动机是在不更改任何其他现有用法的情况下，使“学习Java的早期阶段以及编写小型实用程序时”变得更容易。 document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[为什么要启用编译器警告？]]></title>
+    <url>%2F%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%90%AF%E7%94%A8%E7%BC%96%E8%AF%91%E5%99%A8%E8%AD%A6%E5%91%8A.html</url>
+    <content type="text"><![CDATA[❓ 我经常听到，在编译C和C++程序时，我应该always enable compiler warnings,为什么这是必要的？ 有时我也听说我应该“将警告视为错误”,我该怎么做？ ✔️ 众所周知，C和C++编译器在默认情况下无法报告一些常见的程序员错误，例如： 忘记初始化变量 忘记写函数返回值 printf和scanf中的参数与格式字符串不匹配 使用没有事先声明的函数（C中） 这些warning可以被检测和报告，但通常不是默认开启；必须通过编译器选项开启此功能。 如何启用警告？这取决于您的编译器。 Microsoft C和C++编译器可以使用/W1，/W2，/W3，/W4和/Wall之类的开关，至少请使用/W3。/W4和/Wall可能会在系统头文件产生伪警告，但是只要您的工程使用其中一个编译通过，就应该选择它。另外，这些选项是互斥的。 大多数其他编译器都可以使用-Wall，-Wpedantic和-Wextra等选项。 -Wall是必不可少的，建议使用（请注意，尽管-Wall有其名称，但它仅启用最重要的警告，而不是全部警告）。这些选项可以单独使用，也可以一起使用。 您的IDE可能可以从用户界面启用这些功能。 为什么将警告视为错误？它们只是警告？ warning表示您的代码中可能存在严重的问题，。其他可能致命也可能不会。请调查每个警告，找到根本原因，然后加以解决。如果发生错误警报，请解决它，使用其他feature或结构，以便不再触发警告。如果这很难，请逐个禁用特定警告。 document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>C/C++</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[HTML meta element]]></title>
+    <url>%2FHTML-meta-element.html</url>
+    <content type="text"><![CDATA[HTML &lt;meta> element The meta tag describes some basic metadata. The &lt;meta> tag provides metadata. Metadata is not displayed on the page, but is parsed by the browser. META elements are typically used to specify the description of a web page, keywords, last modified time of the file, author, and other metadata. Metadata can be used in browsers (how to display content or reload pages), search engines (keywords), or other web services. &lt;meta> is usually placed in the &lt;head> area For Chinese web pages, you need to use &lt;meta charset="utf-8"> declaration encoding, otherwise garbled characters will appear. Some browsers (such as 360 browsers) set GBK as the default encoding, so you need to set it to &lt;meta charset="gbk">. Use caseDefine keywords for search engines: 1 Define a description for the page: 1 Define Web page author: 1 Refresh the current page every 30 seconds: 1 document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>HTML/CSS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[HTML div and span]]></title>
+    <url>%2FHTML-div-and-span.html</url>
+    <content type="text"><![CDATA[HTML can combine elements with &lt;div> and &lt;span>. HTML block elementMost HTML elements are defined as block-level elements or inline elements. When a block-level element is displayed in a browser, it usually starts with a new line (and ends). Example: &lt;h1>, &lt;p>, &lt;ul>, &lt;table> HTML inline elementsInline elements usually do not start with a new line when displayed. Example: &lt;b>, &lt;td>, &lt;a>, &lt;img> HTML &lt;div> elementThe HTML &lt;div> element is a block-level element that can be used to combine containers of other HTML elements. The &lt;div> element has no specific meaning. In addition, because it is a block-level element, the browser displays the folds before and after it. If used with CSS, the &lt;div> element can be used to set style properties for large content blocks. Another common use of the &lt;div> element is the document layout. It replaces the old-fashioned way of defining a layout using a table. Document layout using the &lt;table> element is not the correct usage of the form. The &lt;table> element is used to display tabular data. HTML &lt;span> elementHTML &lt;span> element is an inline element that can be used as a container for text The &lt;span> element also has no specific meaning. When used with CSS, the &lt;span> element can be used to set style properties for partial text. document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>HTML/CSS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Web security color]]></title>
+    <url>%2FWeb-security-color.html</url>
+    <content type="text"><![CDATA[What is web security color?A few years ago, when most computers supported only 256 colors, 216 Web Safe colors were recommended as Web standards. The reason for this is that Microsoft and Mac operating systems use 40 different fixed system colors (about 20 for each). We are not sure what it means to do this now, because more and more computers are capable of handling millions of colors, but it is your choice. Initially, 216 cross-platform web security colors were used to ensure that all computers were able to display all colors correctly. document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>HTML/CSS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Review HTML]]></title>
+    <url>%2FReview-HTML.html</url>
+    <content type="text"><![CDATA[&lt;!DOCTYPE html> is declared as an HTML5 document &lt;html> element is the root element of the HTML page &lt;head> element contains the meta data of the document, such as &lt;meta charset="utf-8"> defines the page encoding format as utf-8. &lt;title> element describes the title of the document &lt;body> element contains the visible page content &lt;h1> element defines a big headline &lt;p> element defines a paragraph HTML &lt;title> element Defines the title of the browser toolbar The title that appears in your favorites when a web page is added to your favorites The title displayed on the search engine results page HTML &lt;!DOCTYPE> elementThe &lt;!DOCTYPE> declaration helps to display the page correctly in the browser. There are many different files on the web, and if the version of HTML is correctly declared, the browser will display the content of the page correctly. doctype declaration is case insensitive Note: Always add a forward slash to the subfolder. If you write the link like this: href=”https://www.xxx.com/html", it will generate two HTTP requests to the server. This is because the server adds a forward slash to this address and then creates a new request like this: href=”https://www.xxx.com/html/". document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>HTML/CSS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Fixed width icon in font awesome]]></title>
+    <url>%2FFixed-width-icon-in-font-awesome.html</url>
+    <content type="text"><![CDATA[Fixed width iconThe fa-fw class is used to set a fixed-width icon. This class is useful when different icon widths are out of alignment. Especially suitable for Bootstrap navigation lists and list groups. 123456 &lt;/i> Home&lt;/a> &lt;/i> Library&lt;/a> &lt;/i> Applications&lt;/a> &lt;/i> Settings&lt;/a>&lt;/div> Home Library Applications Settings document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Font Awesome</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Stacked icons in font awesome]]></title>
+    <url>%2FStacked-icons-in-font-awesome.html</url>
+    <content type="text"><![CDATA[Stacked iconsTo stack multiple icons, use the fa-stack class on the parent, the fa-stack-1x class for regular-sized icons, and fa-stack-2x for larger icons. The fa-inverse class can be used as an alternative icon color. You can also add a larger icon class to the parent to further control the size. 1234567891011121314151617 &lt;/i> &lt;/i>&lt;/span>fa-twitter on fa-circle-thin &lt;/i> &lt;/i>&lt;/span>fa-twitter (inverse) on fa-circle &lt;/i> &lt;/i>&lt;/span>fa-ban on fa-camera fa-twitter on fa-circle-thin fa-twitter (inverse) on fa-circle fa-ban on fa-camera document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Font Awesome</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Rotate and flip icons in font awesome]]></title>
+    <url>%2FRotate-and-flip-icons-in-font-awesome.html</url>
+    <content type="text"><![CDATA[Rotate and flip iconsThe fa-rotate-* and fa-flip-* classes are used to rotate and flip icons. 123456&lt;/i>&lt;/i>&lt;/i>&lt;/i>&lt;/i>&lt;/i> document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Font Awesome</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Dynamic icon in font awesome]]></title>
+    <url>%2FDynamic-icon-in-font-awesome.html</url>
+    <content type="text"><![CDATA[Dynamic iconThe fa-spin class rotates the icon, and the fa-pulse class rotates the icon in 8-step cycles. 12345&lt;/i>&lt;/i>&lt;/i>&lt;/i>&lt;/i> Note: CSS3 animations are not supported in IE8 and IE9. document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Font Awesome</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[List icon in font awesome]]></title>
+    <url>%2Flist-icon-in-font-awesome.html</url>
+    <content type="text"><![CDATA[List iconThe fa-ul and fa-li classes are used to replace the default prefix in an unordered list. 12345 &lt;/i>List icons&lt;/li> &lt;/i>List icons&lt;/li> &lt;/i>List icons&lt;/li>&lt;/ul> List icons List icons List icons document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Font Awesome</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Expand font awesome icon in html]]></title>
+    <url>%2Fexpand-font-awesome-icon-in-html.html</url>
+    <content type="text"><![CDATA[How to expand font awesome icon in html?✔️ a-lg (33% increase), fa-2x, fa-3x, fa-4x, or fa-5x classes are used to increase the icon size relative to its container. 12345&lt;/i>&lt;/i>&lt;/i>&lt;/i>&lt;/i> Tip: If your icon is cut off at the top and bottom, increase the line height. document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Font Awesome</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[How to use font awesome icon?]]></title>
+    <url>%2Fhow-to-use-font-awesome-icon.html</url>
+    <content type="text"><![CDATA[Font Awesome is a great icon font library and CSS framework. The Font Awesome font gives you a scalable vector icon that can be custom sized, colored, shaded, and any style that can be styled with CSS. To use the Font Awesome icon, add the following line to the section of the HTML page: Recommended CDN: 1 You can use the prefix fa and the name of the icon to place the Font Awesome icon. 123&lt;/i>&lt;/i>&lt;/i> Font Awesome is designed to work with inline elements. The &lt;i> and &lt;span> elements are widely used for icons. Also note that if you change the font size or color of the icon container, the icon changes. document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Font Awesome</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[One PC, two git accounts]]></title>
+    <url>%2FOne-PC-two-git-accounts.html</url>
+    <content type="text"><![CDATA[🐱 Generate the corresponding ssh key. Add the generated id_rsa.pub to the git SSH key 12ssh-keygen -t rsa -C "x1@email.com"ssh-keygen -t rsa -C "x2@email.com" Pressing Enter directly will generate /c/Users/you/.ssh/id_rsa 12Generating public/private rsa key pair.Enter file in which to save the key (/c/Users/you/.ssh/id_rsa): [Press enter] Pay attention to renaming to avoid files being overwritten. We need to enter the name manually 12Generating public/private rsa key pair.Enter file in which to save the key (/c/Users/you/.ssh/id_rsa): /c/Users/you/.ssh/id_rsa_x1 🐶 Write the following to the config file in the ~/.ssh/config directory. If this file does not exist, create one manually. 1234567891011# defaultHost github.comHostName github.comUser gitIdentityFile ~/.ssh/id_rsa_x1# twoHost x2.github.comHostName github.comUser gitIdentityFile ~/.ssh/id_rsa_x2 🐭 Test if it can communicate normally 12ssh -T git@github.comssh -T x2.github.com Use ssh to clone the repository 1git clone git@github.com:x2/xxx.git Set each repo username/mailbox separately 12git config user.name x2git config user.email "x2@email.com" document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Tool</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[How to define an array in the header file?]]></title>
+    <url>%2FHow-to-define-an-array-in-the-header-file.html</url>
+    <content type="text"><![CDATA[If an array is defined in the .h file and initialized, and the #include "xxx.h" is used to access the array in the .h file in multiple .c files , the compiler will report an error. Even using #ifndef #define #endif;, or adding the modifier const in front of the array does not solve the problem. 💢 ✔️ The solution: add the modifier static in front of the array, for example: 1static char buf[] = {...}; document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>C/C++</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Calculate the checksum of a string by C/C++]]></title>
+    <url>%2FCalculate-the-checksum-of-a-string.html</url>
+    <content type="text"><![CDATA[Calculate the checksum of the string by C/C++, source code sharing 💟 12345678910111213141516171819202122#include "stdio.h"int main() { char msg[] = "5ABA440A4F5A2D46511664726976654368616E676510697320746F6B656E0C78B3B9121E81"; char buf[255]; strcpy(buf, msg); unsigned char checksum = 0; int i = 0; for(i = 0; i < strlen(msg); i++) { if(buf[i] < ':'){ checksum = checksum + buf[i] - '0'; printf("buf[%d]:%d\n",i, buf[i] - '0'); } else { checksum = checksum + buf[i] - 'A' + 10; printf("buf[%d]:%d\n",i, buf[i] - 'A' + 10); } } printf("checksum:%d",checksum); return 0;} Only uppercase characters and numbers are supported. You can support other characters. After reading the ASCII table, you will understand the principle. 🚩 DEC OCT HEX BIN Symbol 48 060 30 00110000 0 49 061 31 00110001 1 50 062 32 00110010 2 51 063 33 00110011 3 52 064 34 00110100 4 53 065 35 00110101 5 54 066 36 00110110 6 55 067 37 00110111 7 56 070 38 00111000 8 57 071 39 00111001 9 58 072 3A 00111010 : document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>C/C++</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[The difference between && and &, | and ||, > and >> in Linux]]></title>
+    <url>%2FThe-difference-between-and-and-in-Linux.html</url>
+    <content type="text"><![CDATA[& and && 🌟& means to execute the task in the background, if you want to run redis-server in the background: 1redis-server & && means that the condition for executing the next command is that the previous command was executed successfully, such as: 1echo '1' && echo '2' | and || 🔅| means the output of the previous command as the next command parameter, such as: 1echo 'yes' | wc -l || means that the condition for executing the next command is that the previous command failed to execute, such as: 1cat nofile || echo "fail" > and >> 💥> means a redirect, deleting the original content and then writing the new content, such as: 1echo '1' > xx.txt >> also means redirection, appending new content to the original content, such as: 1echo '2' >> xx.txt document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Embedded Development</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[SSH [WARNING. REMOTE HOST IDENTIFICATION HAS CHANGED!]]]></title>
+    <url>%2FSSH-WARNING-REMOTE-HOST-IDENTIFICATION-HAS-CHANGED.html</url>
+    <content type="text"><![CDATA[💢 This message appears because the first SSH connection now generates a certificate that is stored in the client’s known_hosts, but if the server is reloaded, the authentication information will change. This error occurs when the server side is different from the client side. 12345678910111213@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED! @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!Someone could be eavesdropping on you right now (man-in-the-middle attack)!It is also possible that the RSA host key has just been changed.The fingerprint for the RSA key sent by the remote host isxx.xx.xx.xx.xx...Please contact your system administrator.Add correct host key in /home/hostname/.ssh/known_hosts to get rid of this message.Offending key in /home/hostname/.ssh/known_hosts:10RSA host key for 192.168.x.xx has changed and you have requested strict checking.Host key verification failed. Therefore, just delete the authentication information from your computer. It will be regenerated when it is connected. Deleting is very simple, just enter an instruction on the client: 1ssh-keygen -R [host] For example: 🙋 1234ssh-keygen -R 192.168.xx.xx# orssh-keygen -f "/home/hostname/.ssh/known_hosts" -R [192.168.xx.xx]:3333 Next, connect again and it will appear. 1Are you sure you want to continue connecting (yes/no)? Enter yes to complete the connection! At the same time, new certifications have been generated. Note: This message may also be caused by a hacker attack, unless you are sure that this is really due to key inconsistencies caused by factors such as reloading, otherwise please try another network environment, maybe you are not a secure network environment! 🚨 document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Embedded Development</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Linux serial port does not receive 0x11, 0x0d, 0x13]]></title>
+    <url>%2FLinux-serial-port-does-not-receive-0x11-0x0d-0x13.html</url>
+    <content type="text"><![CDATA[🔵 Solution for reading serial port without receiving 0x11, 0x0d, 0x13 and other data in linux environment: 1options.c_iflag &= ~(BRKINT | ICRNL | INPCK | ISTRIP | IXON); It can solve the problem of special character loss. ↖️ Many popular linux serial port programming versions on the Internet do not effectively set the c_iflag (termios member variable) variable, so there is no problem when transmitting ASCII code, but 0x0d, 0x11 and 0x13 are lost when transferring binary data. 🔴 Needless to say, these are definitely special characters and are used as special controls. Turn off the ICRNL and IXON options to solve. Detailed description of various options of c_iflag: ➰https://www.gnu.org/software/libc/manual/html_node/Input-Modes.html document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Embedded Development</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Write API with Sphinx+ReadTheDocs]]></title>
+    <url>%2FWrite-API-with-Sphinx-ReadTheDocs.html</url>
+    <content type="text"><![CDATA[Setting up 🌏 Install Sphinx: 1pip install sphinx sphinx-autobuild Create project 123mkdir testProjectcd testProjectsphinx-quickstart Project Configuration Start project configuration after sphinx-quickstart. Generally, only three items need to be entered manually, and the rest can be directly typed Enter. 1231. > Project name: sphinxtestProject2. > Author name(s): Tom3. > Project version []: 1.0.1 View display After compiling, drag testProject/_build/html/index.html to the browser to view the display.Compile html: 1make html Plugin 💡 Markdown plugin Support markdown to html, you need to install pip install recommonmark.Then add in conf.py: 1234source_parsers={ '.md': 'recommonmark.parser.CommonMarkParser'}source_suffix=['.rst','.md'] Markdown’s form plugin Need to install pip install sphinx-markdown-tables.Then add in conf.py: 123extensions = [ 'sphinx_markdown_tables',] Theme 👕Replace the theme Change to the most common Blue Grey with the left side of the theme Install pip install sphinx_rtd_theme Open conf.py and replace the original html_theme = 'alabaster' with html_theme = 'sphinx_rtd_theme' Modify the style based on sphinx_rtd_themeThe items that can be modified can be found in Official Document. Add in conf.py: 1234567891011121314// logo image, you need to put the image in the corresponding pathhtml_logo = './_static/logo.png'// Note this configuration. Files placed in the '_static' folder will overwrite the corresponding files created by the build, so the style files that need to be modified can be placed in the _static path.html_static_path = ['_static']// Do not display the rst source file link in the html pagehtml_show_sourcelink = False// The subtitle of the page labelhtml_title = 'xxx API'// small icon for web page tagshtml_favicon = './_static/favicon.ico' Modify code block color scheme Color scheme selection Add pygments.css file under _static and copy the css content into it. Hosting 📈 Login to readthedocs official website import a Project Manual import Fill in git url Administration -> Advanced Settings The sphinx_markdown_tables plugin is used above. Fill in a file name in the “Require pip request file to build your document” column, the content of this file is sphinx-markdown-tables==0.0.9 Do not enable PDF build Do not enable EPUB build Click to build document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Tool</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[open() VS with open() in Python]]></title>
+    <url>%2Fopen-VS-with-open-in-Python.html</url>
+    <content type="text"><![CDATA[To open a file object in read mode, you need to use Python’s built-in open() function and pass in the filename and identifier: 1>>> f = open('test.txt', 'r') open()The identifier 'r' indicates read, so we successfully opened a file. If the file does not exist, the open() function will throw an IOError error: 123456>>> f = open('notfound.txt', 'r')... f.read()... f.close()Traceback (most recent call last): File "", line 1, in FileNotFoundError: [Errno 2] No such file or directory: 'notfound.txt' 😰 The final step is to call the close() method to close the file. Files must be closed after they are used, because file objects take up resources from the operating system. The number of files that the system can open at the same time is limited. try … finally Since the file may throw an IOError while reading or writing. Once an error occurs, the following f.close() will not be called. So, in order to ensure that the file can be closed, we can use try ... finally to achieve: 🙉 123456try: f = open('/path/to/file', 'r') print(f.read())finally: if f: f.close() with open()But it’s too cumbersome to write this every time, so Python introduces a with statement to automatically call the close() method for us: 😍 12with open('/path/to/file', 'r') as f: print(f.read()) This is the same as the previous try ... finally, but the code is better and cleaner, and you don’t have to call the f.close() method. document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[json in Python]]></title>
+    <url>%2Fjson-in-Python.html</url>
+    <content type="text"><![CDATA[Using the JSON function requires importing the json library: import json Function Description json.dumps Encode Python objects into JSON strings json.loads Decode an encoded JSON string into a Python object json.dumps 🔒json.dumps is used to encode Python objects into JSON strings. 12345678910111213json.dumps( obj, skipkeys=False, ensure_ascii=True, check_circular=True, allow_nan=True, cls=None, indent=None, separators=None, encoding="utf-8", default=None, sort_keys=False, **kw) The following example encodes an array into JSON formatted data: 1234567#!/usr/bin/pythonimport jsondata = [ { 'a' : 1, 'b' : 2, 'c' : 3, 'd' : 4, 'e' : 5 } ]json = json.dumps(data)print json The above code execution results are: 1[{"a": 1, "c": 3, "b": 2, "e": 5, "d": 4}] Use parameters to format the JSON data output: 123456>>> import json>>> print json.dumps({'a': 'DEV', 'b': 7}, sort_keys=True, indent=4, separators=(',', ': ')){ "a": "DEV", "b": 7} json.loads 🔑json.loads is used to decode JSON data. This function returns the data type of the Python field. 1json.loads(s[, encoding[, cls[, object_hook[, parse_float[, parse_int[, parse_constant[, object_pairs_hook[, **kw]]]]]]]]) The following example shows how Python decodes a JSON object: 1234567#!/usr/bin/pythonimport jsonjsonData = '{"a":1,"b":2,"c":3,"d":4,"e":5}';text = json.loads(jsonData)print text The above code execution results are: 1{u'a': 1, u'c': 3, u'b': 2, u'e': 5, u'd': 4} 💥 Conversion table of python primitive type to json type: Python JSON dict object list, tuple array str, unicode string int, long, float number True true False false None null document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[underline in Python]]></title>
+    <url>%2Funderline-in-Python.html</url>
+    <content type="text"><![CDATA[double underline for both head and tail__foo__ 🍗🍗🍗🍗 Defines a special method, usually a system-defined name, like __init__(). Single underline_foo 🍗 A single-underline begins with a protected variable, which means that the protected type can only be accessed by itself and not by from module import * double underline__foo 🍗🍗 Double underline represent private type variables, allowing only the class itself to access document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[pass in Python]]></title>
+    <url>%2FPython-pass-statement.html</url>
+    <content type="text"><![CDATA[The pass in Python is an empty statement to maintain the integrity of the program structure. pass does not do anything, generally used as a placeholder statement. 👰 The syntax of the Python language pass statement is as follows: 12def sample(n_samples): pass The pass at this place occupies a position, because if you define an empty function program will report an error. 👉 when you do not think about the contents of the function can be filled with pass, so that the program can run normally. document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Python print UTF8 encoded string]]></title>
+    <url>%2Fpython-print-UTF8-encoded-string.html</url>
+    <content type="text"><![CDATA[Printing the English string “Hello, World!” is simple, but if you want to print the Chinese string “你好, 世界” you may encounter coding problems. SyntaxError❌ If no encoding is specified in the Python file, an error will occur during execution : 12#!/usr/bin/pythonprint "你好，世界"; The above program execution output is : 12File "test.py", line 2SyntaxError: Non-ASCII character '\xe4' in file test.py on line 2, but no encoding declared; see http://www.python.org/peps/pep-0263.html for details SolutionThe default encoding format in Python is ASCII, which does not print Chinese characters correctly when the encoding format is not modified. ✔️ The solution is to just add # -*- coding: UTF-8 -*- or # coding=utf-8 at the beginning of the file. Note: There should be no spaces on both sides of the = of # coding=utf-8. eg. (Python 2.0+) 1234#!/usr/bin/python# -*- coding: UTF-8 -*-print "你好，世界"; The above program execution output is : 1你好，世界 Python3.X Note: The Python3.X source file defaults to UTF-8 encoding, so you can parse Chinese normally without specifying UTF-8 encoding. 👌 Editor Settings Note: If you use the editor, you also need to set the py file storage format to UTF-8, otherwise an error message similar to the following will appear: 12SyntaxError: (unicode error) ‘utf-8’ codec can’t decode byte 0xc4 in position 0:invalid continuation byte 📜 Pycharm setup steps: Go to file > Settings and search for encoding in the input box. Find Editor > File encodings and set IDE Encoding and Project Encoding to utf-8. document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Python string format]]></title>
+    <url>%2Fpython-string-format.html</url>
+    <content type="text"><![CDATA[^, are centered, left-aligned, right-aligned, followed by width, with a padded character after the:, which can only be one character. If not specified, the default is filled with spaces. + means to display + sign before the positive number and the - sign before the negative number. space means to add a space before the positive number. b, d, o, and x are binary, decimal, octal, and hexadecimal, respectively. 12>>> print("{:.2f}".format(3.1415926));3.14 Number Format Output Description 3.1415926 {:.2f} 3.14 Keep two decimal places 3.1415926 {:+.2f} +3.14 Keep two decimal places with symbol -1 {:+.2f} -1.00 Keep two decimal places with symbol 2.71828 {:.0f} 3 Without decimals 5 {:0>2d} 05 Fill with 0 (fill left, width 2) 5 {:x { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[// in Python]]></title>
+    <url>%2Fpython-comments.html</url>
+    <content type="text"><![CDATA[How to comment in Python?😒Comments in Python have single-line comments and multi-line comments. 🔸Single-line comments 12# This is a commentprint("Hello, World!") 🔹Multi-line commentssingle quotes ''' 123456'''This is a multi-line comment with three single quotesThis is a multi-line comment with three single quotesThis is a multi-line comment with three single quotes'''print("Hello, World!") double quotes """ 123456"""This is a multi-line comment with three double quotesThis is a multi-line comment with three double quotesThis is a multi-line comment with three double quotes"""print("Hello, World!") Single-line comments in Python start with #, Multi-line comments enclose comments with three single quotes ''' or three double quotes """. document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+</search>
